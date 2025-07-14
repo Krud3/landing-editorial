@@ -1,0 +1,63 @@
+---
+import clIcon from "@/assets/icons/competenciaLectoraIcon.svg?raw";
+import pIcon from "@/assets/icons/plataformaIcon.svg?raw";
+import psIcon from "@/assets/icons/pruebaSaberIcon.svg?raw";
+import saIcon from "@/assets/icons/seguimientoAcademico.svg?raw";
+import tIcon from "@/assets/icons/textosIcon.svg?raw";
+
+const features = [
+  {
+    title: "Textos de Excelencia Académica",
+    description:
+      "Diseñamos material educativo para todos los niveles, desde preescolar hasta media vocacional. Nuestro contenido es pedagógicamente avanzado, académicamente riguroso y promueve una formación integral en valores, con un diseño atractivo y actual.",
+    icon: tIcon,
+  },
+  {
+    title: "Competencia Lectora",
+    description:
+      "Más que leer, enseñamos a comprender, analizar y pensar críticamente. Nuestros textos integran metodologías que desarrollan habilidades de interpretación y argumentación, claves para el éxito en todas las áreas del conocimiento.",
+    icon: clIcon,
+  },
+  {
+    title: "Seguimiento académico",
+    description:
+      "Nuestra plataforma permite a docentes y directivos monitorear el desempeño de los estudiantes en tiempo real. Facilita la identificación de fortalezas y áreas de mejora, permitiendo una intervención pedagógica más efectiva y personalizada.",
+    icon: saIcon,
+  },
+  {
+    title: "Pruebas Saber (ICFES)",
+    description:
+      "Ofrecemos material y simulacros enfocados en preparar a los estudiantes para enfrentar con éxito las Pruebas Saber 11°. Les damos las herramientas y la confianza para alcanzar resultados sobresalientes y asegurar su futuro académico.",
+    icon: psIcon,
+  },
+  {
+    title: "Plataforma virtual",
+    description:
+      "Llevamos el aprendizaje al siguiente nivel con una plataforma digital que complementa nuestros textos. Ofrece recursos interactivos, actividades y herramientas de seguimiento para enriquecer la experiencia educativa dentro y fuera del aula.",
+    icon:pIcon,
+  },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    Herramientas Diseñadas para Transformar la Educación
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    Creemos que cada estudiante merece la mejor formación. Por eso, hemos desarrollado un portafolio de soluciones que abarca desde la excelencia académica en textos hasta el seguimiento detallado del progreso en nuestra plataforma virtual.
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-white rounded-full  p-2 w-8 h-8 shrink-0" set:html={item.icon} />
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
