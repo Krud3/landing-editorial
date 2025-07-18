@@ -1,47 +1,129 @@
-# Astro Starter Kit: Minimal
 
-```sh
-npm create astro@latest -- --template minimal
 ```
+landing-editorial
+├─ astro.config.mjs
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ favicon.svg
+│  ├─ icons
+│  │  ├─ competenciaLectoraIcon.svg
+│  │  ├─ plataformaIcon.svg
+│  │  ├─ pruebaSaberIcon.svg
+│  │  ├─ seguimientoAcademico.svg
+│  │  └─ textosIcon.svg
+│  ├─ images
+│  │  ├─ CCDPOETH-2.png
+│  │  ├─ Childrens_Book_Mockup_1.jpg
+│  │  ├─ Childrens_Book_Mockup_2.jpg
+│  │  ├─ Childrens_Book_Mockup_3.jpg
+│  │  ├─ Childrens_Book_Mockup_4.jpg
+│  │  ├─ Childrens_Book_Mockup_5.jpg
+│  │  ├─ Childrens_Book_Mockup_6.jpg
+│  │  ├─ CLASF-2.png
+│  │  ├─ CMAR-2.png
+│  │  └─ FMHMDT-2.png
+│  ├─ logoEditorial.svg
+│  ├─ PDF
+│  └─ SVG
+│     └─ hero1.svg
+├─ README.md
+├─ src
+│  ├─ assets
+│  │  ├─ hero1@2x.png
+│  │  ├─ icons
+│  │  │  ├─ competenciaLectoraIcon.svg
+│  │  │  ├─ plataformaIcon.svg
+│  │  │  ├─ pruebaSaberIcon.svg
+│  │  │  ├─ seguimientoAcademico.svg
+│  │  │  └─ textosIcon.svg
+│  │  └─ images
+│  │     └─ Childrens_Book_Mockup_1.jpg
+│  ├─ components
+│  │  ├─ colaboradores.astro
+│  │  ├─ container.astro
+│  │  ├─ CTA.astro
+│  │  ├─ dropdown.astro
+│  │  ├─ features.astro
+│  │  ├─ footer.astro
+│  │  ├─ hero.astro
+│  │  ├─ navbar.astro
+│  │  └─ ui
+│  │     └─ link.astro
+│  ├─ content
+│  │  ├─ asignaturas
+│  │  │  ├─ aprestamiento.md
+│  │  │  ├─ castellano.md
+│  │  │  ├─ ciencias-naturales-primaria.md
+│  │  │  ├─ ciencias-sociales.md
+│  │  │  ├─ comprension-lectora.md
+│  │  │  ├─ etica-valores.md
+│  │  │  ├─ informatica-primaria.md
+│  │  │  ├─ matematica-primaria.md
+│  │  │  ├─ motricidad.md
+│  │  │  ├─ pre-lectoescritura.md
+│  │  │  └─ pre-matematica.md
+│  │  ├─ config.ts
+│  │  └─ libros
+│  │     ├─ aprestamiento
+│  │     │  └─ jardin.md
+│  │     ├─ castellano
+│  │     │  ├─ cuarto.md
+│  │     │  ├─ primero.md
+│  │     │  ├─ quinto.md
+│  │     │  ├─ segundo.md
+│  │     │  └─ tercero.md
+│  │     ├─ ciencias-naturales-primaria
+│  │     │  ├─ cuarto.md
+│  │     │  ├─ primero.md
+│  │     │  ├─ quinto.md
+│  │     │  ├─ segundo.md
+│  │     │  └─ tercero.md
+│  │     ├─ ciencias-sociales
+│  │     │  ├─ cuarto.md
+│  │     │  ├─ primero.md
+│  │     │  ├─ segundo.md
+│  │     │  └─ tercero.md
+│  │     ├─ comprension-lectora
+│  │     │  ├─ primero.md
+│  │     │  └─ transicion.md
+│  │     ├─ etica-valores
+│  │     │  ├─ cuarto.md
+│  │     │  ├─ primero.md
+│  │     │  ├─ segundo.md
+│  │     │  └─ tercero.md
+│  │     ├─ informatica-primaria
+│  │     │  ├─ cuarto.md
+│  │     │  ├─ primero.md
+│  │     │  ├─ quinto.md
+│  │     │  └─ tercero.md
+│  │     ├─ matematica-primaria
+│  │     │  ├─ cuarto.md
+│  │     │  ├─ primero.md
+│  │     │  ├─ quinto.md
+│  │     │  ├─ segundo.md
+│  │     │  └─ tercero.md
+│  │     ├─ motricidad
+│  │     │  ├─ jardin.md
+│  │     │  ├─ primero.md
+│  │     │  ├─ segundo.md
+│  │     │  └─ transicion.md
+│  │     ├─ pre-lectoescritura
+│  │     │  └─ transicion.md
+│  │     └─ pre-matematica
+│  │        └─ transicion.md
+│  ├─ features
+│  │  └─ textos
+│  ├─ layouts
+│  │  └─ Layout.astro
+│  ├─ pages
+│  │  ├─ index.astro
+│  │  ├─ libros
+│  │  │  ├─ index.astro
+│  │  │  └─ [subjectSlug].astro
+│  │  └─ sobre-nosotros.astro
+│  └─ styles
+│     └─ global.css
+└─ tsconfig.json
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

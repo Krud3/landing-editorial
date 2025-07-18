@@ -1,0 +1,39 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/Layout.astro';
+import Container from '@/components/container.astro';
+
+
+const asignaturas = await getCollection('asignaturas');
+---
+
+<Layout title="Libros EMHM" content="Contribuimos con la producción intelectual de textos y productos académicos de la mano de la tecnología para la comunidad estudiantil. ¡Conócenos!">
+  <Container class="pt-16 pb-8 md:pt-12 md:pb-24">
+    <h1 class="text-4xl font-bold text-center mb-10">
+      Nuestras Áreas de Formación
+    </h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        asignaturas.map((asignatura: any) => (
+          <a 
+            href={`/libros/${asignatura.slug}`} 
+            class="block bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+          >
+            <Image 
+              src={asignatura.data.coverImage} 
+              alt={`Portada de ${asignatura.data.title}`}
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <h2 class="text-2xl font-bold text-gray-800">
+                {asignatura.data.title}
+              </h2>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>

@@ -1,0 +1,45 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import Container from '@/components/container.astro';
+
+export async function getStaticPaths() {
+  const libros = await getCollection('libros');
+  return libros.map(libro => {
+    // Para cada libro, necesitamos el slug de su asignatura y su propio slug
+    // Nota: libro.data.subject.id podría ser solo libro.data.subject si no es un objeto
+    const subjectSlug = libro.data.subject.id; 
+
+    // Simplificamos la obtención del bookSlug usando el mismo método que Astro
+    const bookSlug = libro.slug.split('/')[1]; 
+
+    return {
+      params: { subjectSlug, bookSlug },
+    };
+  });
+}
+
+const { subjectSlug, bookSlug } = Astro.params;
+
+// Cargamos la entrada completa. Esto está perfecto.
+const libro = await getEntry('libros', `${subjectSlug}/${bookSlug}`);
+
+if (!libro) {
+  return Astro.redirect('/404');
+}
+
+// 1. CAMBIO PRINCIPAL: Se elimina la función 'render' importada.
+// En su lugar, llamamos al método .render() en la entrada del libro.
+const { Content } = await libro.render();
+---
+
+<Layout title={libro.data.title} content={libro.data.description}>
+  <Container class="py-16">
+    <h1 class="text-4xl font-bold mb-4">{libro.data.title}</h1>
+    <p class="text-lg text-gray-700 mb-8">{libro.data.description}</p>
+    <!-- Aquí se renderiza el markdown completo -->
+    <div class="prose prose-neutral">
+      <Content />
+    </div>
+  </Container>
+</Layout>

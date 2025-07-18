@@ -7,12 +7,8 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 const menuitems = [
   {
     title: "Textos académicos",
-    path: "#",
-    children: [
-      { title: "Educación prescolar", path: "#" },
-      { title: "Básica primaria", path: "#" },
-      { title: "Básica secundaria", path: "#" },
-    ],
+    path: "/libros",
+
   },
   {
     title: "Competencia lectora",
@@ -22,6 +18,11 @@ const menuitems = [
     title: "Seguimiento académico",
     badge: true,
     path: "/seguimiento-academico",
+    children: [
+      { title: "Educación prescolar", path: "#" },
+      { title: "Básica primaria", path: "#" },
+      { title: "Básica secundaria", path: "#" },
+    ],
   },
   {
     title: "Preparación para el ICFES",
