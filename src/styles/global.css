@@ -1,9 +1,8 @@
 @import "tailwindcss";
-
 @import '@fontsource-variable/noto-sans';
-/* @import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities"; */
+@plugin '@tailwindcss/typography';
+
+/*@import "tailwindcss/typography";*/
 body {
   font-family: 'Noto Sans Variable', sans-serif;
 }

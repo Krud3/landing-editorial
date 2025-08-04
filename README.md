@@ -120,6 +120,8 @@ landing-editorial
 │  │  ├─ index.astro
 │  │  ├─ libros
 │  │  │  ├─ index.astro
+│  │  │  ├─ [subjectSlug]
+│  │  │  │  └─ [bookSlug].astro
 │  │  │  └─ [subjectSlug].astro
 │  │  └─ sobre-nosotros.astro
 │  └─ styles
