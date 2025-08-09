@@ -5,17 +5,18 @@ type DropdownItem = {
   path: string;
 };
 
-const { title, lastItem, children } = Astro.props as {
+const { title, lastItem, children, class: extraClass } = Astro.props as {
   title: string;
   lastItem?: boolean;
   children: DropdownItem[];
+  class?: string;
 };
 ---
 
 <li class="relative">
   <DropdownContainer class="group">
     <button
-      class="flex items-center gap-1 w-full lg:w-auto lg:px-3 py-2 text-gray-600 hover:text-gray-900">
+      class:list={["flex items-center gap-1 w-full lg:w-auto", extraClass]}>
       <span>{title}</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,12 +40,13 @@ const { title, lastItem, children } = Astro.props as {
             : "lg:left-0 origin-top-left",
         ]}>
         <div
-          class="px-3 lg:py-2 lg:bg-white lg:rounded-md lg:shadow lg:border flex flex-col">
+          class="lg:py-2 lg:bg-white px-4 lg:rounded-md lg:shadow flex flex-col">
           {
             children.map((item) => (
               <a
                 href={item.path}
-                class="py-1 text-gray-600 hover:text-gray-900">
+                class="block w-full rounded-md px-2 py-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200/60 hover:text-indigo-600"
+              >
                 {item.title}
               </a>
             ))
