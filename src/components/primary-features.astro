@@ -1,0 +1,189 @@
+---
+import ScreenshotPlaceholder from "@/components/ui/SreenshotPlaceholder.astro"
+
+export interface Props {
+  id?: string
+  class?: string
+  features?: Array<{ title: string; description: string; }>
+  heading?: string
+  subheading?: string
+  bgClass?: string
+}
+
+const {
+  id = 'metodologia',
+  class: className = '',
+  bgClass = 'bg-indigo-50',
+  heading = 'Nuestra metodología al',
+  subheading =
+    'Más allá de las herramientas, nuestro enfoque se centra en un método probado que integra contenido, práctica y seguimiento para garantizar resultados medibles y un aprendizaje significativo.',
+  features = [
+    {
+      title: 'Talleres Didácticos y Contenido Flexible',
+      description:
+        'Al final de cada unidad, los estudiantes aplican lo aprendido en talleres con preguntas de falso/verdadero, selección múltiple, crucigramas y sopas de letras. Además, los docentes pueden seleccionar y adaptar los contenidos temáticos según las necesidades de su grupo.',
+    },
+    {
+      title: 'Análisis Crítico con Lecturas Contextualizadas',
+      description:
+        'Nuestra metodología de competencia lectora utiliza situaciones reales como problemas sociales, análisis de experimentos o gráficos matemáticos. Fomentamos la interpretación y el pensamiento crítico a través de preguntas abiertas y de selección múltiple.',
+    },
+    {
+      title: 'Plataforma Práctica, Retroalimentación Inmediata',
+      description:
+        'Las guías incluyen actividades en formato editable (“Aplico mi saber”) para que el estudiante trabaje sobre el archivo. El módulo de pruebas tipo ICFES entrega la métrica individual al instante, permitiendo al alumno entender sus aciertos y errores en tiempo real.',
+    },
+    {
+      title: 'Ciclo de Mejora Académica Continua',
+      description:
+        'El sistema califica las evaluaciones en línea y resalta las debilidades del estudiante. Con base en estos resultados, el docente puede programar actividades específicas para el mejoramiento académico, y el alumno puede usar una herramienta de entrenamiento para prepararse.',
+    },
+    {
+      title: 'Entrenamiento Especializado para Pruebas Saber',
+      description:
+        'Iniciamos con una prueba diagnóstica para identificar el nivel de cada estudiante en grados 10° y 11°. A partir de ahí, realizamos un trabajo de nivelación y reforzamos competencias con simulacros virtuales en nuestra plataforma y simulacros físicos.',
+    },
+  ],
+} = Astro.props;
+
+---
+
+<section id={id} class={`relative overflow-hidden ${bgClass} rounded-3xl shadow-2xl py-20 sm:py-10 ${className}`}>
+  <div class="mx-auto max-w-2xl text-center xl:max-w-none">
+    <h2 class="font-display text-3xl tracking-tight text-black sm:text-4xl md:text-5xl">
+      <span>{heading}</span>
+      <span class="text-indigo-700 italic">detalle</span>
+    </h2>
+    <p class="mt-6 text-lg tracking-tight mx-4 text-indigo-900">
+      {subheading}
+    </p>
+  </div>
+
+  <div class="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0">
+    <!-- Lista de tabs -->
+    <div class="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
+      <div
+        class="relative z-10 flex gap-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:gap-x-0 lg:gap-y-1 lg:whitespace-normal"
+        role="tablist"
+        aria-orientation="vertical"
+        id="pf-tablist"
+      >
+        {
+          features.map((feature, i) => (
+            <button
+              type="button"
+              role="tab"
+              class="group relative w-full text-left cursor-pointer rounded-full px-4 py-2 transition-colors
+                    lg:rounded-l-xl lg:rounded-r-none lg:p-6"
+              data-tab-btn
+              data-index={i}
+              id={`pf-tab-${i}`}
+              aria-controls={`pf-panel-${i}`}
+              aria-selected="false"
+              tabindex="-1"
+            >
+              <h3 class="flex items-center gap-3 font-display text-lg">
+                <span data-dot aria-hidden="true"
+                  class="hidden h-2 w-2 shrink-0 rounded-full bg-amber-500 ring-2 ring-amber-500"></span>
+                <span data-title class="transition-colors text-slate-900">{feature.title}</span>
+              </h3>
+              <p class="mt-2 hidden text-sm text-black" data-tab-desc>
+                {feature.description}
+              </p>
+            </button>
+          ))
+        }
+
+      </div>
+    </div>
+
+    <!-- Paneles -->
+    <div class="lg:col-span-7">
+      {
+        features.map((feature, i) => (
+          <div
+            role="tabpanel"
+            id={`pf-panel-${i}`}
+            aria-labelledby={`pf-tab-${i}`}
+            data-tab-panel
+            hidden
+          >
+            <div class="relative px-4 sm:px-6 lg:hidden">
+              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-indigo-50 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
+              <p class="relative mx-auto max-w-2xl text-base text-black sm:text-center">
+                {feature.description}
+              </p>
+            </div>
+
+            <div class="mt-10 w-[45rem] max-w-full overflow-hidden rounded-xl sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+              <ScreenshotPlaceholder label={features[i].title} />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const root = document.currentScript.closest('section');
+      if (!root) return;
+
+      const tabs = Array.from(root.querySelectorAll('[data-tab-btn]'));
+      const panels = Array.from(root.querySelectorAll('[data-tab-panel]'));
+
+      function activate(index) {
+        tabs.forEach((btn, i) => {
+          const active = i === index;
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+          btn.tabIndex = active ? 0 : -1;
+
+          const desc   = btn.querySelector('[data-tab-desc]');
+          const dot    = btn.querySelector('[data-dot]');
+          const title  = btn.querySelector('[data-title]');
+
+          btn.classList.toggle('bg-amber-50', active);
+          btn.classList.toggle('ring-1', active);
+          btn.classList.toggle('ring-amber-200', active);
+          btn.classList.toggle('ring-inset', active);
+
+          if (title) {
+            title.classList.toggle('text-indigo-700', active);
+            title.classList.toggle('text-slate-900', !active);
+          }
+
+          if (dot) dot.classList.toggle('hidden', !active);
+
+          if (desc) {
+            desc.classList.add('hidden');
+            desc.classList.toggle('lg:block', active);
+            desc.classList.remove('block');
+          }
+        });
+
+        panels.forEach((panel, i) => {
+          panel.hidden = i !== index;
+        });
+      }
+
+      tabs.forEach((btn, i) => {
+        btn.addEventListener('click', () => activate(i));
+        btn.addEventListener('keydown', (e) => {
+          const { key } = e;
+          let idx = i;
+          if (key === 'ArrowRight' || key === 'ArrowDown') idx = (i + 1) % tabs.length;
+          if (key === 'ArrowLeft' || key === 'ArrowUp')    idx = (i - 1 + tabs.length) % tabs.length;
+          if (idx !== i) {
+            e.preventDefault();
+            tabs[idx].focus();
+            activate(idx);
+          }
+        });
+      });
+
+      // Estado inicial
+      activate(0);
+    })();
+  </script>
+
+</section>

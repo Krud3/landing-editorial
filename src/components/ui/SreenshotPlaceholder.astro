@@ -1,0 +1,22 @@
+---
+export interface Props {
+  label?: string
+  class?: string
+}
+const { label = 'Placeholder', class: className = '' } = Astro.props
+---
+
+<div
+  class={`relative rounded-xl border border-black/40 bg-gradient-to-br from-black/30 to-black/20 shadow-xl ring-1 ring-black/40 ${className}`}
+  aria-label={label}
+>
+  <!-- “Pantalla” ficticia -->
+  <div class="h-72 sm:h-96 lg:h-[28rem] w-full overflow-hidden rounded-lg">
+    <div class="h-full w-full bg-[linear-gradient(135deg,rgba(0,0,0,0.4)_25%,transparent_25%,transparent_50%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.4)_75%,transparent_75%,transparent)] bg-[length:24px_24px]"></div>
+  </div>
+
+  <!-- Etiqueta -->
+  <div class="pointer-events-none absolute left-3 top-3 rounded-md bg-black/60 px-2 py-1 text-xs font-medium text-white/70 ring-1 ring-black/50">
+    {label}
+  </div>
+</div>

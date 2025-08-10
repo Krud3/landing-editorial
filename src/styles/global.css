@@ -1,8 +1,13 @@
 @import "tailwindcss";
 @import '@fontsource-variable/noto-sans';
+@import '@fontsource-variable/playfair-display';
 @plugin '@tailwindcss/typography';
 
 /*@import "tailwindcss/typography";*/
 body {
   font-family: 'Noto Sans Variable', sans-serif;
+}
+
+h1,h2 {
+  font-family: 'Playfair Display Variable', serif;
 }

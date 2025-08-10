@@ -37,27 +37,32 @@ const features = [
     icon:pIcon,
   },
 ];
+const sectionId = 'features';
 ---
+<section id={sectionId}>
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-indigo-900">
-    Herramientas Diseñadas para Transformar la Educación
-  </h2>
-  <p class="text-lg mt-4 text-indigo-900">
-    Creemos que cada estudiante merece la mejor formación. Por eso, hemos desarrollado un portafolio de soluciones que abarca desde la excelencia académica en textos hasta el seguimiento detallado del progreso en nuestra plataforma virtual.
-  </p>
-</div>
+  <div class="mt-16 md:mt-0">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-black">
+      <span class="text-black">Herramientas Diseñadas para  </span>
+      <span class="text-indigo-700 italic">Transformar la Educación</span>
+      
+    </h2>
+    <p class="text-lg mt-4 text-black">
+      Creemos que cada estudiante merece la mejor formación. Por eso, hemos desarrollado un portafolio de soluciones que abarca desde la excelencia académica en textos hasta el seguimiento detallado del progreso en nuestra plataforma virtual.
+    </p>
+  </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
-  {
-    features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-amber-500 rounded-full text-indigo-900 flex items-center justify-center w-8 h-8 shrink-0" set:html={item.icon} />
-        <div>
-          <h3 class="font-semibold text-lg text-indigo-900">{item.title}</h3>{" "}
-          <p class="text-indigo-900 mt-2 leading-relaxed">{item.description}</p>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16 pb-16">
+    {
+      features.map((item) => (
+        <div class="flex gap-4 items-start">
+          <div class="mt-1 bg-amber-500 rounded-full text-indigo-900 flex items-center justify-center w-8 h-8 shrink-0" set:html={item.icon} />
+          <div>
+            <h3 class="font-semibold text-lg text-indigo-700">{item.title}</h3>{" "}
+            <p class="text-black mt-2 leading-relaxed">{item.description}</p>
+          </div>
         </div>
-      </div>
-    ))
-  }
-</div>
+      ))
+    }
+  </div>
+</section>

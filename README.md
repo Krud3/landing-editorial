@@ -5,6 +5,7 @@ landing-editorial
 ├─ package-lock.json
 ├─ package.json
 ├─ public
+│  ├─ 2x
 │  ├─ favicon.svg
 │  ├─ icons
 │  │  ├─ competenciaLectoraIcon.svg
