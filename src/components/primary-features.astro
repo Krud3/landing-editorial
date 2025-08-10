@@ -1,10 +1,19 @@
 ---
-import ScreenshotPlaceholder from "@/components/ui/SreenshotPlaceholder.astro"
+import ScreenshotPlaceholder from "@/components/ui/ScreenshotPlaceholder.astro"
+import AnimatedBars from "@/components/ui/AnimatedBars.astro"
+import AnimatedPc from "@/components/ui/AnimatedPc.astro"
+import AnimatedCompetencia from "@/components/ui/AnimatedCompetencia.astro"
+
+export interface Feature {
+  title: string
+  description: string
+  animation?: any
+}
 
 export interface Props {
   id?: string
   class?: string
-  features?: Array<{ title: string; description: string; }>
+  features?: Feature[]
   heading?: string
   subheading?: string
   bgClass?: string
@@ -22,21 +31,26 @@ const {
       title: 'Talleres Didácticos y Contenido Flexible',
       description:
         'Al final de cada unidad, los estudiantes aplican lo aprendido en talleres con preguntas de falso/verdadero, selección múltiple, crucigramas y sopas de letras. Además, los docentes pueden seleccionar y adaptar los contenidos temáticos según las necesidades de su grupo.',
+      
     },
     {
       title: 'Análisis Crítico con Lecturas Contextualizadas',
       description:
         'Nuestra metodología de competencia lectora utiliza situaciones reales como problemas sociales, análisis de experimentos o gráficos matemáticos. Fomentamos la interpretación y el pensamiento crítico a través de preguntas abiertas y de selección múltiple.',
+        animation: AnimatedCompetencia,
+        
     },
     {
       title: 'Plataforma Práctica, Retroalimentación Inmediata',
       description:
         'Las guías incluyen actividades en formato editable (“Aplico mi saber”) para que el estudiante trabaje sobre el archivo. El módulo de pruebas tipo ICFES entrega la métrica individual al instante, permitiendo al alumno entender sus aciertos y errores en tiempo real.',
+        animation: AnimatedPc,
     },
     {
       title: 'Ciclo de Mejora Académica Continua',
       description:
         'El sistema califica las evaluaciones en línea y resalta las debilidades del estudiante. Con base en estos resultados, el docente puede programar actividades específicas para el mejoramiento académico, y el alumno puede usar una herramienta de entrenamiento para prepararse.',
+        animation: AnimatedBars,
     },
     {
       title: 'Entrenamiento Especializado para Pruebas Saber',
@@ -45,14 +59,13 @@ const {
     },
   ],
 } = Astro.props;
-
 ---
 
 <section id={id} class={`relative overflow-hidden ${bgClass} rounded-3xl shadow-2xl py-20 sm:py-10 ${className}`}>
   <div class="mx-auto max-w-2xl text-center xl:max-w-none">
     <h2 class="font-display text-3xl tracking-tight text-black sm:text-4xl md:text-5xl">
       <span>{heading}</span>
-      <span class="text-indigo-700 italic">detalle</span>
+      <span class="text-indigo-700 italic"> detalle</span>
     </h2>
     <p class="mt-6 text-lg tracking-tight mx-4 text-indigo-900">
       {subheading}
@@ -93,33 +106,39 @@ const {
             </button>
           ))
         }
-
       </div>
     </div>
 
     <!-- Paneles -->
     <div class="lg:col-span-7">
       {
-        features.map((feature, i) => (
-          <div
-            role="tabpanel"
-            id={`pf-panel-${i}`}
-            aria-labelledby={`pf-tab-${i}`}
-            data-tab-panel
-            hidden
-          >
-            <div class="relative px-4 sm:px-6 lg:hidden">
-              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-indigo-50 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
-              <p class="relative mx-auto max-w-2xl text-base text-black sm:text-center">
-                {feature.description}
-              </p>
-            </div>
+        features.map((feature, i) => {
+          const Animation = feature.animation
+          return (
+            <div
+              role="tabpanel"
+              id={`pf-panel-${i}`}
+              aria-labelledby={`pf-tab-${i}`}
+              data-tab-panel
+              hidden
+            >
+              <!-- En móvil, mostramos la descripción acá (no en la lista) -->
+              <div class="relative px-4 sm:px-6 lg:hidden">
+                <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-indigo-50 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
+                <p class="relative mx-auto max-w-2xl text-base text-black sm:text-center">
+                  {feature.description}
+                </p>
+              </div>
 
-            <div class="mt-10 w-[45rem] max-w-full overflow-hidden rounded-xl sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
-              <ScreenshotPlaceholder label={features[i].title} />
+              <!-- Contenedor visual del panel -->
+              <div class="mt-10 w-[45rem] max-w-full overflow-hidden rounded-xl sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+                <ScreenshotPlaceholder label={feature.title}>
+                  {Animation ? <Animation class="mx-auto max-w-[420px]"/> : null}
+                </ScreenshotPlaceholder>
+              </div>
             </div>
-          </div>
-        ))
+          )
+        })
       }
     </div>
   </div>
@@ -142,6 +161,7 @@ const {
           const dot    = btn.querySelector('[data-dot]');
           const title  = btn.querySelector('[data-title]');
 
+          // Fondo y borde del item activo
           btn.classList.toggle('bg-amber-50', active);
           btn.classList.toggle('ring-1', active);
           btn.classList.toggle('ring-amber-200', active);
@@ -152,12 +172,14 @@ const {
             title.classList.toggle('text-slate-900', !active);
           }
 
+
           if (dot) dot.classList.toggle('hidden', !active);
 
+
           if (desc) {
-            desc.classList.add('hidden');
+            desc.classList.add('hidden');             
             desc.classList.toggle('lg:block', active);
-            desc.classList.remove('block');
+            desc.classList.remove('block');          
           }
         });
 
@@ -185,5 +207,4 @@ const {
       activate(0);
     })();
   </script>
-
 </section>

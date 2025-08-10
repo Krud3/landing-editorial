@@ -1,0 +1,84 @@
+---
+import kidUrl from '@/assets/SVG/Competencia.svg?url'
+import t1Url  from '@/assets/SVG/t1_competencia.svg?url'
+import t2Url  from '@/assets/SVG/t2_competencia.svg?url'
+import t3Url  from '@/assets/SVG/t3_competencia.svg?url'
+
+export interface Props {
+  class?: string
+  kidDur?: number; kidDelay?: number
+  p1Dur?: number; p1Delay?: number
+  p2Dur?: number; p2Delay?: number
+  p3Dur?: number; p3Delay?: number
+  p1x?: number; p1y?: number; p1w?: number
+  p2x?: number; p2y?: number; p2w?: number
+  p3x?: number; p3y?: number; p3w?: number
+}
+
+const {
+  class: className = '',
+  kidDur = 500, kidDelay = 0,
+  p1Dur = 500, p1Delay = 450,
+  p2Dur = 500, p2Delay = 800,
+  p3Dur = 500, p3Delay = 1150,
+  p1x = 10, p1y = 8,  p1w = 70,
+  p2x = -30, p2y = 30, p2w = 70,
+  p3x = 68, p3y = 30, p3w = 50,
+} = Astro.props
+---
+
+<div class={`relative w-full h-full ${className}`}>
+  <div class="relative aspect-square w-full max-h-full">
+    <!-- Niño -->
+    <img src={kidUrl} alt="" draggable="false"
+         class="abs fill kid select-none" style={`--dur:${kidDur}ms; --delay:${kidDelay}ms;`} loading="lazy" decoding="async" />
+
+    <!-- Popups -->
+    <img src={t1Url} alt="" draggable="false"
+         class="abs popup select-none"
+         style={`left:${p1x}%; top:${p1y}%; width:${p1w}%; --dur:${p1Dur}ms; --delay:${p1Delay}ms;`} loading="lazy" decoding="async" />
+
+    <img src={t2Url} alt="" draggable="false"
+         class="abs popup select-none"
+         style={`left:${p2x}%; top:${p2y}%; width:${p2w}%; --dur:${p2Dur}ms; --delay:${p2Delay}ms;`} loading="lazy" decoding="async" />
+
+    <img src={t3Url} alt="" draggable="false"
+         class="abs popup select-none"
+         style={`left:${p3x}%; top:${p3y}%; width:${p3w}%; --dur:${p3Dur}ms; --delay:${p3Delay}ms;`} loading="lazy" decoding="async" />
+  </div>
+</div>
+
+<style>
+  .abs { position: absolute; }
+  .fill { inset: 0; }
+  .kid, .popup { display: block; height: auto; }
+
+  /* Niño: fade + pop */
+  .kid {
+    opacity: 0;
+    transform: scale(.96);
+    animation: kidIn var(--dur) cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay: var(--delay);
+    filter: drop-shadow(0 8px 18px rgba(2,6,23,.10));
+  }
+  @keyframes kidIn { to { opacity: 1; transform: scale(1); } }
+
+  /* Popups: “pop” secuencial */
+  .popup {
+    opacity: 0;
+    transform: translateY(10%) scale(.9);
+    animation: popupIn var(--dur) cubic-bezier(.22,.9,.3,1.05) forwards;
+    animation-delay: var(--delay);
+    z-index: 10;
+    pointer-events: none;
+    filter: drop-shadow(0 6px 12px rgba(2,6,23,.12));
+  }
+  @keyframes popupIn {
+    70% { opacity: 1; transform: translateY(-4%) scale(1.04); }
+    100%{ opacity: 1; transform: translateY(0)    scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .kid, .popup { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+</style>
