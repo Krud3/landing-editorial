@@ -1,0 +1,118 @@
+---
+/**
+ * ContactForm – Formulario funcional usando FormSubmit.
+ * Envía a: editorialmercedesherreramora@gmail.com
+ * Redirige a /gracias al enviar correctamente.
+ */
+const RECEIVER_EMAIL = "editorialmercedesherreramora@gmail.com";
+const ACTION = `https://formsubmit.co/${RECEIVER_EMAIL}`;
+---
+
+<section class="w-full">
+  <form
+    action={ACTION}
+    method="POST"
+    class="mx-auto grid max-w-2xl gap-4 rounded-2xl bg-white/70 p-6 shadow-lg backdrop-blur-md"
+  >
+    <!-- FormSubmit config -->
+    <input type="hidden" name="_next" value="/gracias" />
+    <input type="hidden" name="_subject" value="Nuevo contacto desde el sitio web" />
+    <input type="hidden" name="_captcha" value="false" />
+    <!-- Honeypot anti-bots (oculto) -->
+    <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <div>
+        <label for="name" class="mb-1 block text-sm font-medium text-gray-700">Nombre completo</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          placeholder="Tu nombre"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-indigo-500"
+        />
+      </div>
+      <div>
+        <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Correo electrónico</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          inputmode="email"
+          autocomplete="email"
+          required
+          placeholder="tucorreo@ejemplo.com"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-indigo-500"
+        />
+      </div>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <div>
+        <label for="phone" class="mb-1 block text-sm font-medium text-gray-700">Teléfono</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          inputmode="tel"
+          placeholder="Ej: 3187267013"
+          pattern="[0-9\s+()-]{7,}"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-indigo-500"
+        />
+      </div>
+      <div>
+        <label for="subject" class="mb-1 block text-sm font-medium text-gray-700">Motivo de contacto</label>
+        <select
+          id="subject"
+          name="subject"
+          required
+          class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 outline-none focus:border-indigo-500"
+        >
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option>Textos académicos</option>
+          <option>Competencia lectora</option>
+          <option>Plataforma digital</option>
+          <option>Seguimiento académico</option>
+          <option>Preparación ICFES / Preicfes</option>
+          <option>Otro</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label for="message" class="mb-1 block text-sm font-medium text-gray-700">Mensaje</label>
+      <textarea
+        id="message"
+        name="message"
+        required
+        rows="6"
+        placeholder="Cuéntanos cómo podemos ayudarte..."
+        class="w-full resize-y rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-indigo-500"
+      ></textarea>
+    </div>
+
+    <div class="flex items-start gap-3">
+      <input id="policy" name="policy" type="checkbox" required class="mt-1" />
+      <label for="policy" class="text-sm text-gray-600">
+        Acepto ser contactado(a) por la Editorial MHM según las finalidades de comunicación y
+        servicio. Consulta más sobre nosotros en <a href="/sobre-nosotros" class="text-indigo-600 underline">Sobre nosotros</a>.
+      </label>
+    </div>
+
+    <div class="flex items-center justify-end gap-3 pt-2">
+      <button type="reset" class="rounded-lg border border-gray-300 px-4 py-2 text-gray-600 hover:bg-gray-100">Limpiar</button>
+      <button
+        type="submit"
+        class="rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white transition-colors hover:bg-indigo-700"
+      >
+        Enviar mensaje
+      </button>
+    </div>
+
+    <p class="mt-1 text-xs text-gray-500">
+      * También puedes escribirnos a
+      <a href="mailto:editorialmercedesherreramora@gmail.com" class="text-indigo-600 underline">editorialmercedesherreramora@gmail.com</a>.
+    </p>
+  </form>
+</section>

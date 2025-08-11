@@ -1,0 +1,76 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ContactForm from "@/components/contact-form.astro";
+---
+
+<Layout title="Contáctanos" content="Contacta a la Editorial Mercedes Herrera Mora. Encuentra nuestro teléfono, email y dirección en Cali para solicitar cotizaciones o agendar una demostración.">
+  <section class="mx-auto max-w-5xl px-4 py-10">
+    <div class="mb-10 text-center">
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">¡Hablemos!</h1>
+      <p class="mx-auto mt-3 max-w-2xl text-gray-600">
+        Estamos listos para acompañarte con <strong>textos académicos</strong>,
+        <strong>competencia lectora</strong>, <strong>plataforma digital</strong> y
+        <strong>proyecto Preicfes</strong>. Déjanos tus datos y te contactaremos muy pronto.
+      </p>
+    </div>
+
+    <div class="grid items-start gap-8 md:grid-cols-2">
+      <!-- Información de contacto -->
+      <div class="space-y-5 rounded-2xl bg-gray-50 p-6">
+        <h2 class="text-xl font-semibold text-gray-900">Datos de la Editorial</h2>
+        <ul class="space-y-3 text-gray-700">
+          <li>
+            <span class="block text-sm text-gray-500">Correo</span>
+            <a class="text-indigo-600 underline" href="mailto:editorialmercedesherreramora@gmail.com">editorialmercedesherreramora@gmail.com</a>
+          </li>
+          <li>
+            <span class="block text-sm text-gray-500">Teléfonos</span>
+            <div class="space-y-1">
+              <a href="tel:+573187267013" class="block hover:underline">318 726 7013</a>
+              <a href="tel:+573171367968" class="block hover:underline">317 136 7968</a>
+              <a href="tel:+573243238533" class="block hover:underline">324 323 8533</a>
+            </div>
+          </li>
+          <li>
+            <span class="block text-sm text-gray-500">Dirección</span>
+            <p>Callejón Alférez Real No 05 – Cali, Valle del Cauca, Colombia</p>
+            <a
+              class="mt-1 inline-block text-indigo-600 underline"
+              href="https://www.google.com/maps/search/?api=1&query=Callej%C3%B3n%20Alf%C3%A9rez%20Real%20No%2005%2C%20Cali%2C%20Valle%20del%20Cauca"
+              target="_blank" rel="noreferrer"
+            >Ver en Google Maps</a>
+          </li>
+        </ul>
+
+        <div class="pt-3 text-sm text-gray-500">
+          <p><strong>NIT:</strong> 900838854-5</p>
+          <p><strong>Representante Legal:</strong> Luis Francisco Cornejo Quiñones</p>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+
+  <!-- Datos estructurados (SEO) -->
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Editorial Mercedes Herrera Mora S.A.S.",
+      "email": "editorialmercedesherreramora@gmail.com",
+      "telephone": ["+57 3187267013", "+57 3171367968", "+57 3243238533"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Callejón Alférez Real No 05",
+        "addressLocality": "Cali",
+        "addressRegion": "Valle del Cauca",
+        "addressCountry": "CO"
+      },
+      "url": "https://tu-dominio.com/contactanos"
+    })}
+  </script>
+</Layout>

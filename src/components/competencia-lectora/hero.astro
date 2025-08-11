@@ -1,0 +1,56 @@
+---
+import { Picture } from "astro:assets";
+import heroImage from "@/assets/images/portada-competencia-lectora.png";
+import Link from "@/components/ui/link.astro";
+const sectionId = 'hero-competencia-lectora';
+---
+
+<main
+  class="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-8 pt-16 pb-8 md:pt-12 md:pb-24"
+>
+  <div class="py-6 overflow-visible">
+    <Picture
+      src={heroImage}
+      alt="Libro de competencia lectora, básica primaria, grado tercero."
+      widths={[200, 400, 600]}
+      sizes="(max-width: 800px) 100vw, 620px"
+      loading="eager"
+      format="avif"
+    />
+  </div>
+
+  <div>
+    <h1 
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter"
+    >
+      <span class="text-black">Competencia lectora,</span>
+      <!-- <span class="text-black italic"> para un</span> -->
+      <span class="text-indigo-700 italic">para un mundo</span>
+      <span class="text-black">de información rápida.</span>
+    </h1>
+    <p class="text-lg mt-4 text-black max-w-xl mx-auto lg:mx-0">
+      De la comprensión a la acción: que tus estudiantes lean, comprendan y apliquen.
+    </p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <Link
+          href="#"
+          href="/contactanos"
+          target="_blank"
+          class="flex gap-1 items-center justify-center"
+          style="indigo"
+          rel="noopener">
+          <div class="flex items-center gap-2">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=book" />
+            <span class="material-symbols-outlined">
+            book
+            </span>
+            <span class="text-sm">Solita un demo de un capítulo</span>
+          </div>
+        </Link>
+      </div>
+      <div class="mt-2 flex flex-col sm:flex-row gap-3 items-start">
+        <p class="italic text-zinc-500">Incluye libro impreso + simulacro virtual</p>
+      </div>
+
+  </div>
+</main>

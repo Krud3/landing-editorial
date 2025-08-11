@@ -1,0 +1,28 @@
+---
+import "@/styles/global.css"
+const {
+  title = "Everything Starts as a Square - Get lost in the world of icon design",
+  description = "A book and video course that teaches you how to design your own icons from scratch."
+} = Astro.props;
+---
+<html lang="en" class="h-full scroll-smooth bg-white antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&display=swap" />
+    <!-- Inter to mirror next/font setup -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --font-inter: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+    </style>
+  </head>
+  <body class="flex min-h-full flex-col">
+    <slot />
+  </body>
+</html>
