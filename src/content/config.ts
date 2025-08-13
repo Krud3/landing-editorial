@@ -6,6 +6,7 @@ const asignaturasCollection = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     coverImage: image(),
+    secondImage: image(),
   }),
 });
 

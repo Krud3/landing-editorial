@@ -2,6 +2,7 @@
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '@/layouts/Layout.astro'; 
 import Container from '@/components/container.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const asignaturas = await getCollection('asignaturas');
@@ -19,16 +20,37 @@ const todosLosLibros = await getCollection('libros');
 const librosPorAsignatura = todosLosLibros
   .filter((libro: any) => libro.data.subject.id === subjectSlug)
   .sort((a: any, b: any) => (a.data.gradeOrder ?? 0) - (b.data.gradeOrder ?? 0)); 
+
+import defaultImage from '@/assets/images/Childrens_Book_Mockup_1.jpg';
+const imagePath = asignaturaActual?.data.secondImage ? asignaturaActual.data.secondImage : defaultImage;
 ---
 
 <Layout title={`Libros de ${asignaturaActual?.data.title}`} content="Contribuimos con la producción intelectual de textos y productos académicos...">
   <Container>
-    <h1 class="text-4xl font-bold text-center mb-2">
-      Libros de {asignaturaActual?.data.title}
-    </h1>
-    <p class="text-center text-lg text-gray-600 mb-10">
-      Explora nuestro material educativo para esta área.
-    </p>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-10">
+      
+      <Image 
+        src={imagePath}
+        alt={`Icono de ${asignaturaActual?.data.title}`}
+        width={646}
+        height={300}
+        format="webp"
+        quality={80}
+      />
+
+      <div class="text-center md:text-left">
+        <h1 class="mb-10 text-5xl lg:text-6xl  xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+          Libros de
+          <span class="text-indigo-700 italic">
+            {asignaturaActual?.data.title}
+          </span>
+        </h1>
+        <p class="text-lg text-gray-600 mt-2">
+          Explora nuestro material educativo para esta área.
+        </p>
+      </div>
+
+    </div>
 
     <div class="space-y-8 max-w-4xl mx-auto">
       {
@@ -40,8 +62,8 @@ const librosPorAsignatura = todosLosLibros
               href={`/libros/${subjectSlug}/${bookSlug}`} 
               class="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition"
             >
-              <h2 class="text-2xl font-bold text-violet-700">{libro.data.title}</h2>
-              <p class="mt-2 text-gray-700">{libro.data.description}</p>
+              <h2 class="text-2xl font-bold text-indigo-700">{libro.data.title}</h2>
+              <p class="mt-2 text-black">{libro.data.description}</p>
             </a>
           )
 

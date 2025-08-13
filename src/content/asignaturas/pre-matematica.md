@@ -1,4 +1,5 @@
 ---
 title: 'Pre-matemática'
-coverImage: '@/assets/images/Childrens_Book_Mockup_1.jpg'
+coverImage: '@/assets/images/front-cover/pre-matematica.png'
+secondImage: '@/assets/images/open-book/pre-matematica.png'
 ---

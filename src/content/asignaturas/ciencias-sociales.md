@@ -1,4 +1,5 @@
 ---
 title: 'Ciencias Sociales'
-coverImage: '@/assets/images/Childrens_Book_Mockup_1.jpg'
+coverImage: '@/assets/images/front-cover/sociales.png'
+secondImage: '@/assets/images/open-book/sociales.png'
 ---
