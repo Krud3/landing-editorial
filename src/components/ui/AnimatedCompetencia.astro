@@ -29,11 +29,9 @@ const {
 
 <div class={`relative w-full h-full ${className}`}>
   <div class="relative aspect-square w-full max-h-full">
-    <!-- Niño -->
     <img src={kidUrl} alt="" draggable="false"
          class="abs fill kid select-none" style={`--dur:${kidDur}ms; --delay:${kidDelay}ms;`} loading="lazy" decoding="async" />
 
-    <!-- Popups -->
     <img src={t1Url} alt="" draggable="false"
          class="abs popup select-none"
          style={`left:${p1x}%; top:${p1y}%; width:${p1w}%; --dur:${p1Dur}ms; --delay:${p1Delay}ms;`} loading="lazy" decoding="async" />
@@ -53,7 +51,6 @@ const {
   .fill { inset: 0; }
   .kid, .popup { display: block; height: auto; }
 
-  /* Niño: fade + pop */
   .kid {
     opacity: 0;
     transform: scale(.96);
@@ -63,7 +60,6 @@ const {
   }
   @keyframes kidIn { to { opacity: 1; transform: scale(1); } }
 
-  /* Popups: “pop” secuencial */
   .popup {
     opacity: 0;
     transform: translateY(10%) scale(.9);

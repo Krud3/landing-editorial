@@ -1,0 +1,199 @@
+---
+import libro1Url    from '@/assets/SVG/libro1.svg?url'
+import libro2Url    from '@/assets/SVG/libro2.svg?url'
+import libroVacioUrl from '@/assets/SVG/libro_vacio.svg?url'
+
+import t1_l1Url from '@/assets/SVG/t1_libro1.svg?url'
+import t2_l1Url from '@/assets/SVG/t2_libro1.svg?url'
+import t3_l1Url from '@/assets/SVG/t3_libro1.svg?url'
+import t4_l1Url from '@/assets/SVG/t4_libro1.svg?url'
+
+import t1_l2Url from '@/assets/SVG/t1_libro2.svg?url'
+import t2_l2Url from '@/assets/SVG/t2_libro2.svg?url'
+import t3_l2Url from '@/assets/SVG/t3_libro2.svg?url'
+import t4_l2Url from '@/assets/SVG/t4_libro2.svg?url'
+
+export interface Props {
+  class?: string
+
+  b1Dur?: number; b1Delay?: number
+  b2Dur?: number; b2Delay?: number
+  eDur?: number;  eDelay?: number
+
+  tDur?: number; t1Delay?: number; tStep?: number
+
+  fDur?: number
+  f1Delay?: number; f2Delay?: number; f3Delay?: number; f4Delay?: number
+
+  b1x?: number; b1y?: number; b1w?: number
+  b2x?: number; b2y?: number; b2w?: number
+  ex?: number;  ey?: number;  ew?: number
+}
+
+const {
+  class: className = '',
+
+  b1Dur = 520, b1Delay = 0,
+  b2Dur = 520, b2Delay = 180,
+  eDur  = 520, eDelay  = 360,
+
+  tDur = 420, t1Delay = 700, tStep = 140,
+
+  fDur = 800,
+  f1Delay = 1500,  
+  f2Delay = 1650,  
+  f3Delay = 1800,  
+  f4Delay = 1950,  
+
+  b1x = 6,  b1y = 18, b1w = 42,     
+  b2x = 62, b2y = 18, b2w = 42,     
+  ex  = 34, ey  = 50, ew  = 42,     
+} = Astro.props
+---
+
+<div class={`relative w-full h-full ${className}`}>
+  <div class="scene relative aspect-square w-full max-h-full select-none">
+
+    <div id="book1" class="book abs" style={`left:${b1x}%; top:${b1y}%; width:${b1w}%;`}>
+      <img src={libro1Url} alt="" draggable="false"
+           class="book-img pop" style={`--dur:${b1Dur}ms; --delay:${b1Delay}ms;`} loading="lazy" decoding="async" />
+
+      <img id="l1-t1" src={t1_l1Url} alt="" draggable="false" class="label"
+           style={`--dur:${tDur}ms; --delay:${t1Delay}ms; left:24%; top:20%; width:72%;`} loading="lazy" decoding="async" />
+      <img id="l1-t2" src={t2_l1Url} alt="" draggable="false" class="label"
+           style={`--dur:${tDur}ms; --delay:${t1Delay + tStep}ms; left:24%; top:42%; width:74%;`} loading="lazy" decoding="async" />
+      <img id="l1-t3" src={t3_l1Url} alt="" draggable="false" class="label"
+           style={`--dur:${tDur}ms; --delay:${t1Delay + tStep*2}ms; left:24%; top:65%; width:72%;`} loading="lazy" decoding="async" />
+      <img id="l1-t4" src={t4_l1Url} alt="" draggable="false" class="label"
+           style={`--dur:${tDur}ms; --delay:${t1Delay + tStep*3}ms; left:24%; top:78%; width:68%;`} loading="lazy" decoding="async" />
+    </div>
+
+    <div id="book2" class="book abs" style={`left:${b2x}%; top:${b2y}%; width:${b2w}%;`}>
+      <img src={libro2Url} alt="" draggable="false"
+           class="book-img pop" style={`--dur:${b2Dur}ms; --delay:${b2Delay}ms;`} loading="lazy" decoding="async" />
+
+      <img id="l2-t1" src={t1_l2Url} alt="" draggable="false" class="label"
+           style={`--dur:${tDur}ms; --delay:${t1Delay}ms; left:24%; top:20%; width:72%;`} loading="lazy" decoding="async" />
+      <img id="l2-t2" src={t2_l2Url} alt="" draggable="false" class="label"
+           style={`--dur:${tDur}ms; --delay:${t1Delay + tStep}ms; left:24%; top:42%; width:58%;`} loading="lazy" decoding="async" />
+      <img id="l2-t3" src={t3_l2Url} alt="" draggable="false" class="label"
+           style={`--dur:${tDur}ms; --delay:${t1Delay + tStep*2}ms; left:24%; top:60%; width:50%;`} loading="lazy" decoding="async" />
+      <img id="l2-t4" src={t4_l2Url} alt="" draggable="false" class="label"
+           style={`--dur:${tDur}ms; --delay:${t1Delay + tStep*3}ms; left:24%; top:78%; width:68%;`} loading="lazy" decoding="async" />
+    </div>
+
+    <div id="bookEmpty" class="book abs" style={`left:${ex}%; top:${ey}%; width:${ew}%;`}>
+      <img src={libroVacioUrl} alt="" draggable="false"
+           class="book-img pop" style={`--dur:${eDur}ms; --delay:${eDelay}ms;`} loading="lazy" decoding="async" />
+
+      <div id="slot-a" class="slot" style="left:22%; top:20%; width:76%; height:8%;"></div>
+      <div id="slot-b" class="slot" style="left:22%; top:42%; width:76%; height:8%;"></div>
+      <div id="slot-c" class="slot" style="left:22%; top:56%; width:76%; height:8%;"></div>
+      <div id="slot-d" class="slot" style="left:22%; top:78%; width:76%; height:8%;"></div>
+    </div>
+
+    <img src={t2_l1Url} alt="" draggable="false" class="flyer"
+         data-from="#l1-t2" data-to="#slot-a"
+         style={`--dur:${fDur}ms; --delay:${f1Delay}ms;`} loading="lazy" decoding="async" />
+    <img src={t3_l1Url} alt="" draggable="false" class="flyer"
+         data-from="#l1-t3" data-to="#slot-b"
+         style={`--dur:${fDur}ms; --delay:${f2Delay}ms;`} loading="lazy" decoding="async" />
+    <img src={t1_l2Url} alt="" draggable="false" class="flyer"
+         data-from="#l2-t1" data-to="#slot-c"
+         style={`--dur:${fDur}ms; --delay:${f3Delay}ms;`} loading="lazy" decoding="async" />
+    <img src={t4_l2Url} alt="" draggable="false" class="flyer"
+         data-from="#l2-t4" data-to="#slot-d"
+         style={`--dur:${fDur}ms; --delay:${f4Delay}ms;`} loading="lazy" decoding="async" />
+
+  </div>
+</div>
+
+<style>
+  .abs{ position:absolute; }
+  .scene{ isolation:isolate; }
+  .book{ position:absolute; }
+  .book-img, .label, .flyer{ display:block; height:auto; }
+  .slot{ position:absolute; inset-inline-start:0; inset-block-start:0; pointer-events:none; }
+
+  .pop{
+    opacity:0; transform:translateY(10%) scale(.96);
+    animation: bookIn var(--dur) cubic-bezier(.22,.9,.3,1.05) forwards;
+    animation-delay: var(--delay);
+    filter: drop-shadow(0 8px 18px rgba(2,6,23,.12));
+  }
+  @keyframes bookIn{
+    70%{ opacity:1; transform:translateY(-3%) scale(1.02) }
+    100%{ opacity:1; transform:translateY(0) scale(1) }
+  }
+
+  #bookEmpty {z-index: 3;}
+
+  .label{
+    position:absolute; opacity:0; transform:translateY(8%) scale(.95);
+    animation: labelIn var(--dur) cubic-bezier(.22,.9,.3,1.05) forwards;
+    animation-delay: var(--delay);
+    z-index: 2;
+    pointer-events:none;
+    filter: drop-shadow(0 6px 12px rgba(2,6,23,.10));
+  }
+  @keyframes labelIn{
+    70%{ opacity:1; transform:translateY(-3%) scale(1.02) }
+    100%{ opacity:1; transform:translateY(0) scale(1) }
+  }
+
+  .flyer{
+    position:absolute; opacity:0; z-index: 10; pointer-events:none;
+    filter: drop-shadow(0 10px 20px rgba(2,6,23,.14));
+
+    left: var(--from-left, 0px); top: var(--from-top, 0px); width: var(--from-w, auto);
+    animation: fly var(--dur) cubic-bezier(.22,.9,.3,1.05) forwards;
+    animation-delay: var(--delay);
+  }
+  @keyframes fly{
+    0%  { opacity:0; left:var(--from-left); top:var(--from-top); }
+    8%  { opacity:1; }
+    100%{ opacity:1; left:var(--to-left);   top:var(--to-top);   }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .pop, .label, .flyer { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+</style>
+
+<script is:inline>
+
+  (function(){
+    const onReady = () => {
+      const scene = document.querySelector('.scene');
+      if(!scene) return;
+      const sceneRect = scene.getBoundingClientRect();
+
+      const flyers = Array.from(document.querySelectorAll('.flyer'));
+      flyers.forEach(f => {
+        const fromSel = f.getAttribute('data-from');
+        const toSel   = f.getAttribute('data-to');
+        const fromEl  = fromSel ? document.querySelector(fromSel) : null;
+        const toEl    = toSel   ? document.querySelector(toSel)   : null;
+        if(!fromEl || !toEl) return;
+
+        const fromRect = fromEl.getBoundingClientRect();
+        const toRect   = toEl.getBoundingClientRect();
+
+        f.style.setProperty('--from-w', fromRect.width + 'px');
+
+        const fromLeft = fromRect.left - sceneRect.left;
+        const fromTop  = fromRect.top  - sceneRect.top;
+        const toLeft   = toRect.left   - sceneRect.left;
+        const toTop    = toRect.top    - sceneRect.top;
+
+        f.style.setProperty('--from-left', fromLeft + 'px');
+        f.style.setProperty('--from-top',  fromTop  + 'px');
+        f.style.setProperty('--to-left',   toLeft   + 'px');
+        f.style.setProperty('--to-top',    toTop    + 'px');
+      });
+    };
+
+    if (document.readyState === 'complete') onReady();
+    else window.addEventListener('load', onReady, { once: true });
+  })();
+</script>

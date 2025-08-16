@@ -5,56 +5,48 @@ import panel2Svg from '@/assets/SVG/pcpanel2.svg?raw'
 import checkSvg from '@/assets/SVG/chulo-verde2.svg?raw'
 
 export interface Props {
-  /** tiempos en ms */
+
   pcDur?: number
   p1Dur?: number
   p2Dur?: number
-  /** delays en ms */
+
   pcDelay?: number
   p1Delay?: number
   p2Delay?: number
-  /** Posiciones relativas (en %) dentro de un lienzo 1080x1080 */
+
   p1x?: number; p1y?: number; p1w?: number; p1h?: number
   p2x?: number; p2y?: number; p2w?: number; p2h?: number
-  /** Check (posición y timing) */
+
   chX?: number; chY?: number; chW?: number; chH?: number
   chDur?: number; chDelayExtra?: number
   class?: string
 }
 
-/**
- * Posiciones por defecto:
- * - pantalla del PC: tomada del SVG (aprox)
- * - panel1/2: dentro de la pantalla
- * - chulo: esquina inferior derecha de la pantalla
- */
+
 const {
   class: className = '',
   pcDur = 500,  pcDelay = 0,
   p1Dur = 600,  p1Delay = 350,
   p2Dur = 600,  p2Delay = 700,
-  // porcentajes relativos al lienzo 1080x1080
+  
   p1x = 6,  p1y = 20.5311, p1w = 30.0364, p1h = 80.0193,
   p2x = 5,  p2y = 5.4806,  p2w = 90.8842, p2h = 6.5876,
-  // check (posición dentro del lienzo)
+  
   chX = 55, chY = 30, chW = 24, chH = 24,
   chDur = 420, chDelayExtra = 150,
 } = Astro.props
 
-// Calculamos cuándo termina TODO para disparar el check
 const endPc  = pcDelay + pcDur
 const endP1  = p1Delay + p1Dur
 const endP2  = p2Delay + p2Dur
 const checkDelay = Math.max(endPc, endP1, endP2) + chDelayExtra
 ---
 
-<!-- Lienzo con ratio cuadrado para mantener proporciones -->
 <div class={`relative w-full h-full flex items-center justify-center ${className}`}>
   <div class="relative w-full max-h-full aspect-square">
-    <!-- PC (fondo) -->
+    
     <div class="abs fill-parent pc" style={`--dur:${pcDur}ms; --delay:${pcDelay}ms;`} set:html={pcSvg} />
 
-    <!-- Panel 1 -->
     <div
       class="abs sprite panel1"
       style={`left:${p1x}%; top:${p1y}%; width:${p1w}%; height:${p1h}%; --dur:${p1Dur}ms; --delay:${p1Delay}ms;`}
@@ -62,7 +54,6 @@ const checkDelay = Math.max(endPc, endP1, endP2) + chDelayExtra
       <div class="fill-parent" set:html={panel1Svg} />
     </div>
 
-    <!-- Panel 2 -->
     <div
       class="abs sprite panel2"
       style={`left:${p2x}%; top:${p2y}%; width:${p2w}%; height:${p2h}%; --dur:${p2Dur}ms; --delay:${p2Delay}ms;`}
@@ -70,7 +61,6 @@ const checkDelay = Math.max(endPc, endP1, endP2) + chDelayExtra
       <div class="fill-parent" set:html={panel2Svg} />
     </div>
 
-    <!-- ✅ Chulo (aparece al final) -->
     <div
       class="abs check"
       style={`left:${chX}%; top:${chY}%; width:${chW}%; height:${chH}%; --dur:${chDur}ms; --delay:${checkDelay}ms;`}
@@ -85,7 +75,6 @@ const checkDelay = Math.max(endPc, endP1, endP2) + chDelayExtra
   .fill-parent { width: 100%; height: 100%; }
   .abs svg { width: 100%; height: 100%; display: block; }
 
-  /* PC: fade-in + pop */
   .pc {
     opacity: 0;
     transform: scale(.96);
@@ -94,18 +83,16 @@ const checkDelay = Math.max(endPc, endP1, endP2) + chDelayExtra
   }
   @keyframes pcIn { to { opacity: 1; transform: scale(1); } }
 
-  /* Paneles: entran deslizando */
   .sprite {
     opacity: 0;
     transform: translateY(-12%) scale(.98);
     animation: slideIn var(--dur) cubic-bezier(.22,.9,.3,1) forwards;
     animation-delay: var(--delay);
   }
-  .panel1 { transform: translateX(-12%) scale(.98); } /* desde la izquierda */
-  .panel2 { transform: translateY(-16%) scale(.98); } /* desde arriba */
+  .panel1 { transform: translateX(-12%) scale(.98); } 
+  .panel2 { transform: translateY(-16%) scale(.98); } 
   @keyframes slideIn { to { opacity: 1; transform: translate(0,0) scale(1); } }
 
-  /* ✅ Chulo: aparece al final con un "pop" */
   .check {
     opacity: 0;
     transform: scale(.8) rotate(-6deg);
@@ -119,7 +106,6 @@ const checkDelay = Math.max(endPc, endP1, endP2) + chDelayExtra
     100% { opacity: 1; transform: scale(1)   rotate(0deg); }
   }
 
-  /* Motion-safe */
   @media (prefers-reduced-motion: reduce){
     .pc, .sprite, .check {
       animation: none !important;

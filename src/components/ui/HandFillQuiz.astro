@@ -1,0 +1,121 @@
+---
+import manoUrl from '@/assets/SVG/mano.svg?url'
+import preguntasUrl from '@/assets/SVG/preguntas.svg?url'
+
+export interface Props {
+  class?: string
+}
+
+const { class: className = '' } = Astro.props
+---
+
+<div class={`relative h-full ${className}`}>
+
+  <div class="board">
+
+    <img src={preguntasUrl} alt="" class="sheet" loading="lazy" decoding="async" />
+
+    <div class="dots" style="--dot:17%;">
+
+      <div id="q1a" class="dot" style="left:18%; top:18%;"></div>
+      <div id="q1b" class="dot mark1" style="left:22.5%; top:29.3%;"></div>
+      <div id="q1c" class="dot" style="left:18%; top:40%;"></div>
+      <div id="q1d" class="dot" style="left:18%; top:51%;"></div>
+
+      <div id="q2a" class="dot" style="left:29%; top:60.5%;"></div>
+      <div id="q2b" class="dot" style="left:29%; top:71.5%;"></div>
+      <div id="q2c" class="dot mark2" style="left:22.5%; top:83.4%;"></div>
+      <div id="q2d" class="dot" style="left:29%; top:93.5%;"></div>
+
+      <div id="q3a" class="dot mark3" style="left:22.5%; top:43.4%;"></div>
+      <div id="q3b" class="dot" style="left:76%; top:29%;"></div>
+      <div id="q3c" class="dot" style="left:76%; top:40%;"></div>
+      <div id="q3d" class="dot" style="left:76%; top:51%;"></div>
+    </div>
+
+    <img src={manoUrl} alt="" class="hand" loading="lazy" decoding="async" />
+  </div>
+</div>
+
+<style>
+
+  .board{
+    --ratio-w: 363;            
+    --ratio-h: 721;            
+    --total: 4200ms;           
+    --delay: 200ms;            
+    --press: 180ms;            
+    --hand-w: 42%;             
+    --tip-x: 18%;              
+    --tip-y: 76%;              
+
+    position: relative;
+    height: 100%;
+    aspect-ratio: calc(var(--ratio-w) / var(--ratio-h));
+    margin: 0 auto;
+    overflow: hidden;
+    display: block;
+  }
+
+
+  .sheet{
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: fill; 
+    display: block;
+  }
+
+  .dots{ position:absolute; inset:0; pointer-events:none; z-index:3; }
+  .dot{
+    position:absolute; width:var(--dot); aspect-ratio:1/1; transform:translate(-50%,-50%);
+  }
+  .dot::after{
+    content:''; position:absolute; inset:16%; border-radius:999px; background:#0a0a0a;
+    transform:scale(0); opacity:.95;
+  }
+
+  @keyframes fillPop{ 0%{transform:scale(0)} 40%{transform:scale(.9)} 100%{transform:scale(1)} }
+  .dot.mark1::after{ animation: fillPop var(--press) cubic-bezier(.2,.8,.2,1) forwards; animation-delay: calc(var(--delay) + var(--total) * 0.30); }
+  .dot.mark2::after{ animation: fillPop var(--press) cubic-bezier(.2,.8,.2,1) forwards; animation-delay: calc(var(--delay) + var(--total) * 0.66); }
+  .dot.mark3::after{ animation: fillPop var(--press) cubic-bezier(.2,.8,.2,1) forwards; animation-delay: calc(var(--delay) + var(--total) * 0.96); }
+
+
+  .hand{
+    position:absolute; width:var(--hand-w); height:auto; z-index:4; pointer-events:none;
+
+    --tx: calc(var(--tip-x) * -1);
+    --ty: calc(var(--tip-y) * -1);
+    transform: translate(var(--tx), var(--ty)) scale(1);
+    filter: drop-shadow(0 10px 22px rgba(2,6,23,.15));
+    animation: path var(--total) cubic-bezier(.22,.9,.3,1.05) var(--delay) forwards;
+  }
+
+  .board{
+
+    --p0x: -15%;  --p0y: 105%;
+
+    --p1x: 29%;   --p1y: 29.3%;
+    --p2x: 29%;   --p2y: 82.5%;
+    --p3x: 29%;   --p3y: 43%;
+  }
+
+  @keyframes path{
+    0%   { left: var(--p0x); top: var(--p0y); transform: translate(var(--tx), var(--ty)) scale(1); }
+
+    25%  { left: var(--p1x); top: var(--p1y); transform: translate(var(--tx), var(--ty)) scale(1); }
+    30%  { left: var(--p1x); top: var(--p1y); transform: translate(var(--tx), var(--ty)) scale(.98); } 
+    35%  { left: var(--p1x); top: var(--p1y); transform: translate(var(--tx), var(--ty)) scale(1); }
+
+    65%  { left: var(--p2x); top: var(--p2y); transform: translate(var(--tx), var(--ty)) scale(1); }
+    68%  { left: var(--p2x); top: var(--p2y); transform: translate(var(--tx), var(--ty)) scale(.98); } 
+    71%  { left: var(--p2x); top: var(--p2y); transform: translate(var(--tx), var(--ty)) scale(1); }
+
+    96%  { left: var(--p3x); top: var(--p3y); transform: translate(var(--tx), var(--ty)) scale(1); }
+    100% { left: var(--p3x); top: var(--p3y); transform: translate(var(--tx), var(--ty)) scale(.98); } 
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hand{ animation:none !important; }
+    .dot::after{ animation:none !important; transform:scale(1) !important; }
+  }
+</style>

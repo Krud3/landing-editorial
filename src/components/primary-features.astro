@@ -3,6 +3,8 @@ import ScreenshotPlaceholder from "@/components/ui/ScreenshotPlaceholder.astro"
 import AnimatedBars from "@/components/ui/AnimatedBars.astro"
 import AnimatedPc from "@/components/ui/AnimatedPc.astro"
 import AnimatedCompetencia from "@/components/ui/AnimatedCompetencia.astro"
+import LibroAssembler from "@/components/ui/LibroAssembler.astro"
+import HandFillQuiz from "@/components/ui/HandFillQuiz.astro"
 
 export interface Feature {
   title: string
@@ -31,6 +33,7 @@ const {
       title: 'Talleres Didácticos y Contenido Flexible',
       description:
         'Al final de cada unidad, los estudiantes aplican lo aprendido en talleres con preguntas de falso/verdadero, selección múltiple, crucigramas y sopas de letras. Además, los docentes pueden seleccionar y adaptar los contenidos temáticos según las necesidades de su grupo.',
+        animation: LibroAssembler,
       
     },
     {
@@ -56,6 +59,7 @@ const {
       title: 'Entrenamiento Especializado para Pruebas Saber',
       description:
         'Iniciamos con una prueba diagnóstica para identificar el nivel de cada estudiante en grados 10° y 11°. A partir de ahí, realizamos un trabajo de nivelación y reforzamos competencias con simulacros virtuales en nuestra plataforma y simulacros físicos.',
+        animation: HandFillQuiz,
     },
   ],
 } = Astro.props;

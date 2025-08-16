@@ -1,10 +1,10 @@
 ---
 export interface Props {
-  values?: number[]   // 0–100 (altura de cada barra)
-  durMs?: number      // duración de cada barra
-  staggerMs?: number  // desfase entre barras
-  lineDurMs?: number  // duración del dibujo de la línea
-  lineDelayExtraMs?: number // colchón tras acabar la última barra
+  values?: number[]   
+  durMs?: number      
+  staggerMs?: number  
+  lineDurMs?: number  
+  lineDelayExtraMs?: number 
 }
 
 const vals = (Astro.props.values ?? [30, 45, 70, 50, 85]).map(v =>
@@ -15,26 +15,25 @@ const n = vals.length;
 const durMs = Astro.props.durMs ?? 900;
 const staggerMs = Astro.props.staggerMs ?? 120;
 
-// Cuándo termina la última barra
+
 const totalBarsTime = durMs + staggerMs * (n - 1);
 
-// Duración y delay de la línea
+
 const lineDurMs = Astro.props.lineDurMs ?? (n * 220);
 const lineDelayExtraMs = Astro.props.lineDelayExtraMs ?? 120;
 const lineDelay = totalBarsTime + lineDelayExtraMs;
 
-// Generamos el path en un SVG 100x100 para usar porcentajes
+
 const step = 100 / n;
 const points = vals.map((v, i) => ({
-  x: (i + 0.5) * step,  // centrado en cada columna
-  y: 100 - v            // 0 arriba, 100 abajo
+  x: (i + 0.5) * step,  
+  y: 100 - v            
 }));
 const pathD = points.map((p, i) => `${i ? 'L' : 'M'} ${p.x},${p.y}`).join(' ');
 ---
 
-<!-- Contenedor del gráfico -->
 <div class="relative h-full w-full p-4" style={`--lineDelay:${lineDelay}ms; --lineDur:${lineDurMs}ms`}>
-  <!-- Barras -->
+
   <div
     class="grid h-full w-full items-end gap-3 rounded-lg"
     style={`grid-template-columns: repeat(${n}, minmax(0, 1fr));`}
@@ -49,10 +48,8 @@ const pathD = points.map((p, i) => `${i ? 'L' : 'M'} ${p.x},${p.y}`).join(' ');
     ))}
   </div>
 
-  <!-- Línea que conecta las cimas (se dibuja al final) -->
   <div class="pointer-events-none absolute inset-0 p-4">
     <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="h-full w-full">
-      <!-- Usamos pathLength=1 para animar con dashoffset sin JS -->
       <path
         d={pathD}
         pathLength="1"
@@ -63,7 +60,7 @@ const pathD = points.map((p, i) => `${i ? 'L' : 'M'} ${p.x},${p.y}`).join(' ');
 </div>
 
 <style>
-  /* Barras: crecen desde la base */
+
   .bar{
     height: calc(var(--value) * 1%);
     transform-origin: bottom;
@@ -73,21 +70,19 @@ const pathD = points.map((p, i) => `${i ? 'L' : 'M'} ${p.x},${p.y}`).join(' ');
   }
   @keyframes bar-grow { to { transform: scaleY(1); } }
 
-  /* Línea: se dibuja de izquierda a derecha tras las barras */
   .line{
-    stroke: rgb(245 158 11);            /* amber-500 */
+    stroke: rgb(245 158 11);            
     stroke-width: 2.25;
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-dasharray: 1;                /* gracias a pathLength="1" */
+    stroke-dasharray: 1;                
     stroke-dashoffset: 1;
     animation: line-draw var(--lineDur) ease forwards;
     animation-delay: var(--lineDelay);
   }
   @keyframes line-draw { to { stroke-dashoffset: 0; } }
 
-  /* Motion-safe */
   @media (prefers-reduced-motion: reduce){
     .bar{ animation: none; transform: scaleY(1); }
     .line{ animation: none; stroke-dashoffset: 0; }

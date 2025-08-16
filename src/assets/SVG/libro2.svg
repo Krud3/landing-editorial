@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 391.09 494.87">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #3752ac;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #372aac;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        font-family: NotoSans-Bold, 'Noto Sans';
+        font-size: 55px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect class="cls-1" x="8.22" y="1.4" width="382.87" height="494.81" rx="54.01" ry="54.01"/>
+    <rect class="cls-4" x="2.78" y="15.03" width="374.17" height="467.55" rx="54.01" ry="54.01"/>
+    <path class="cls-2" d="M89.82,496.21h-24.69C29.16,496.21,0,467.05,0,431.09V66.52C0,30.55,29.16,1.4,65.12,1.4h24.69v494.81Z"/>
+  </g>
+  <text class="cls-3" transform="translate(149.02 69.86)"><tspan x="0" y="0">Índice</tspan></text>
+</svg>
