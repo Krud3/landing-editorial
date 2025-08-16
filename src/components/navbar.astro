@@ -8,32 +8,38 @@ const menuitems = [
   {
     title: "Textos académicos",
     path: "/libros",
+    children: undefined,
   },
   {
     title: "Competencia lectora",
     path: "/competencia-lectora",
+    children: undefined,
   },
   {
     title: "Seguimiento académico",
     path: "/seguimiento-academico",
-    children: [
-      { title: "Educación prescolar", path: "#" },
-      { title: "Básica primaria", path: "#" },
-      { title: "Básica secundaria", path: "#" },
-    ],
+    // children: [
+    //   { title: "Educación prescolar", path: "#" },
+    //   { title: "Básica primaria", path: "#" },
+    //   { title: "Básica secundaria", path: "#" },
+    // ],
+    children: undefined,
   },
   {
     title: "Preparación para el ICFES",
     badge: true,
     path: "/sapere",
+    children: undefined,
   },
   {
     title: "Plataforma virtual",
     path: "https://plataforma.editorialmercedesherrerasas.com/",
+    children: undefined,
   },
   // {
   //   title: "Sobre nosotros",
   //   path: "/sobre-nosotros",
+  //   children: undefined,
   // },
 ];
 const currentPath = Astro.url.pathname;

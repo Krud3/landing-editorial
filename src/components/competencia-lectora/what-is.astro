@@ -1,0 +1,223 @@
+---
+import Link from "@/components/ui/link.astro";
+
+/**
+ * Sección: Potencia el Futuro Académico con Nuestro Texto de Competencia Lectora
+ * Inspirado en la propuesta de valor de Editorial Mercedes Herrera Mora.
+ */
+
+// --- DATOS EXTRAÍDOS DEL PORTAFOLIO ---
+
+// Metodología Pedagógica: Conecta el aprendizaje con la realidad.
+const metodologia = [
+  {
+    icon: '🌐',
+    title: 'Lecturas Contextualizadas',
+    description: 'Usamos situaciones del mundo real como problemas sociales, análisis de experimentos y gráficos matemáticos para un aprendizaje significativo.'
+  },
+  {
+    icon: '🧠',
+    title: 'Preguntas Desafiantes',
+    description: 'Fomentamos la interpretación y el pensamiento crítico con preguntas abiertas y de selección múltiple que evalúan la comprensión y el razonamiento.'
+  },
+];
+
+// Áreas de Trabajo: Flexibilidad curricular total para tu institución.
+const areasDisponibles = [
+  'Química', 'Física', 'Biología', 'Matemáticas', 'Ciencias sociales',
+  'Ética y valores', 'Economía', 'Lengua Castellana', 'Ambiental', 'Inglés',
+  'Administración', 'Emprendimiento',
+];
+
+// Beneficios Clave: Más que un texto, una inversión en el futuro de sus estudiantes.
+const beneficios = [
+  {
+    icon: '🚀',
+    title: 'Rendimiento Superior en Pruebas Saber',
+    description: 'Preparamos a los estudiantes para enfrentar con éxito las pruebas estandarizadas (ICFES), mejorando los resultados institucionales.'
+  },
+  {
+    icon: '💡',
+    title: 'Desarrollo de Pensamiento Crítico',
+    description: 'Nuestra metodología transforma a los estudiantes en ciudadanos reflexivos, capaces de analizar, argumentar y resolver problemas reales.'
+  },
+  {
+    icon: '🧑‍🎓',
+    title: 'Autonomía y Aprendizaje Integral',
+    description: 'Fomentamos la autonomía en el aprendizaje, abriendo nuevas oportunidades académicas y profesionales para sus egresados.'
+  },
+];
+
+// Oferta de Valor: Una solución completa para el año lectivo 2025.
+const oferta = {
+  precioCOP: '70.000',
+  incluye: [
+    '1 libro impreso con registro ISBN, adaptable a su plan de estudios.',
+    '1 simulacro virtual tipo ICFES para medir y potenciar el progreso.'
+  ],
+  detallesSimulacro: [
+    'Alineado con los componentes de las pruebas Saber 3°, 5°, 9°, 10° y 11°.',
+    'Programado por la institución con 15 días de antelación para su comodidad.',
+    'Entrega de resultados detallados (por estudiante e institucional) en máximo 10 días.'
+  ]
+};
+
+// Cobertura Educativa: Apoyamos cada etapa del desarrollo académico.
+const cobertura = [
+  { titulo: 'Primaria y Básica Secundaria (1° a 9°)', detalle: 'Textos impresos en las áreas fundamentales del saber.' },
+  { titulo: 'Educación Media (10° y 11°)', detalle: 'Textos especializados para una preparación preuniversitaria sólida.' },
+];
+---
+
+<section
+  id="competencia-lectora-ventas"
+  aria-label="Texto de Competencia Lectora"
+  class="py-5 sm:py-24"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+
+      <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter">
+        Potencie el Futuro de sus Estudiantes con Nuestra 
+        <span class="text-indigo-700 italic">Herramienta Pedagógica</span>
+      </h2>
+      <p class="mt-4 text-lg text-slate-700">
+        La competencia lectora es la base del éxito académico y profesional. Nuestro texto no solo enseña a leer, sino a <strong>interpretar, analizar, argumentar y construir una visión crítica del mundo</strong>. Es la herramienta definitiva para formar líderes autónomos y preparados.
+      </p>
+    </div>
+
+        <div class="mt-16">
+      <h3 class="text-2xl font-bold text-center text-slate-900">Una Metodología Diseñada para el Éxito</h3>
+      <div class="mt-8 grid gap-8 md:grid-cols-2">
+        {metodologia.map(item => (
+          <div class="rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <div class="flex items-center gap-4">
+              <span class="text-3xl">{item.icon}</span>
+              <h4 class="text-xl font-semibold text-slate-900">{item.title}</h4>
+            </div>
+            <p class="mt-3 text-slate-600">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+        <div class="mt-16 text-center">
+      <h3 class="text-2xl font-bold text-slate-900">Currículo Flexible: 12 Áreas para Integrar en su Proyecto Educativo</h3>
+      <p class="mx-auto mt-3 max-w-2xl text-slate-600">
+        Usted elige las áreas de trabajo. Nuestros textos se adaptan a las necesidades de sus estudiantes y a su plan académico, con <strong>dos lecturas por período</strong> para un avance constante.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2">
+        {areasDisponibles.map(area => (
+          <span class="rounded-full bg-amber-50 px-3 py-1 text-sm font-medium text-emerald-800">{area}</span>
+        ))}
+      </div>
+    </div>
+
+        <div class="mt-20">
+      <h3 class="text-2xl font-bold text-center text-slate-900">Invierta en Resultados Comprobables</h3>
+      <div class="mt-10 grid gap-8 sm:grid-cols-1 lg:grid-cols-3">
+        {beneficios.map(b => (
+          <div class="text-center">
+            <p class="text-4xl">{b.icon}</p>
+            <h4 class="mt-4 text-lg font-semibold text-slate-900">{b.title}</h4>
+            <p class="mt-1 text-slate-600">{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+        <div class="mt-20">
+      <div class="rounded-2xl bg-slate-50 p-8">
+        <div class="grid items-center gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-slate-900">Nuestra Oferta para el siguiente año lectivo</h3>
+            <ul role="list" class="mt-4 space-y-2">
+              {oferta.incluye.map(item => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-1">🎯</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="rounded-lg bg-white p-6 text-center shadow">
+            <p class="text-sm font-medium text-indigo-400">Valor por estudiante</p>
+            <p class="mt-1 text-4xl font-bold text-slate-900">
+              ${oferta.precioCOP} <span class="text-2xl">COP</span>
+            </p>
+          </div>
+        </div>
+
+        <details class="mt-6 rounded-lg border border-slate-200 bg-white p-4">
+          <summary class="cursor-pointer font-medium text-slate-900">
+            Conozca más sobre el simulacro virtual incluido
+          </summary>
+
+          <div class="mt-8 grid grid-cols-3 items-start gap-4">
+            <ul class="col-span-2 list-disc pl-4 text-slate-600">
+              {oferta.detallesSimulacro.map(detail => (
+                <li>{detail}</li>
+              ))}
+            </ul>
+
+            <div class="col-span-1 flex h-full items-center justify-center">
+            <div class="col-span-1 flex h-full items-center justify-center">
+              <Link
+                href="/contactanos"
+                target="_blank"
+                rel="noopener"
+                style="indigo"
+                size="lg" 
+                class="text-2xl"
+              >
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined">book</span>
+                  <span class="font-semibold">Solicita asesoría</span>
+                </div>
+              </Link>
+            </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+    <div class="mx-auto relative overflow-hidden bg-indigo-50 rounded-3xl shadow-2xl py-20 sm:py-10">
+      <div class="text-center">
+        <p class="font-semibold text-indigo-700">Valor Agregado Único</p>
+        <h3 class="mt-4 mb-4 2xl lg:text-3xl xl:text-4xl font-bold lg:tracking-tight xl:tracking-tighter">Simulacro Virtual Incluido</h3>
+      </div>
+      
+      <ul role="list" class="mx-6 mt-6 space-y-4 text-slate-700">
+        <li class="flex items-start gap-3">
+          <span class="mt-1">✔️</span>
+          <p>
+            Incluye 1 simulacro virtual que la institución agenda según su cronograma.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1">✔️</span>
+          <p>
+            Resultados en máximo 10 días, con un reporte detallado por estudiante y un informe consolidado para la institución.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1">✔️</span>
+          <p>
+            Basado en los componentes y la estructura que evalúa el ICFES en las pruebas Saber 3°, 5°, 9°, 10° y 11°.
+          </p>
+        </li>
+      </ul>
+      
+      <div class="mt-8 text-center">
+        <Link
+          href="/contactanos"
+          target="_blank"
+          style="indigo"
+          class="rounded-md px-6 py-3 text-base shadow-md"
+        >
+          Quiero ver un ejemplo de informe
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
