@@ -1,31 +1,14 @@
 ---
 import Link from "@/components/ui/link.astro"; // Se mantiene el import de tu componente de enlace
-
+import examBoyImage from "@/assets/images/exam-boy.png"
+import { Picture } from "astro:assets"
+import Pasos from "./pasos.astro";
 /**
  * Componente: Página de Aterrizaje para el Módulo de Seguimiento Académico.
  * Contenido actualizado según el PDF proporcionado y estilos basados en la versión anterior.
  */
 
 // --- DATOS PARA LAS SECCIONES ---
-
-// Etapas del sistema de seguimiento, extraídas del PDF.
-const etapas = [
-  {
-    icon: '1️⃣',
-    title: 'Evaluación Diagnóstica',
-    description: 'Con nuestras pruebas iniciales, los colegios descubren el punto de partida real de cada estudiante. Identificamos fortalezas y vacíos para diseñar planes de nivelación efectivos desde el comienzo. Los reportes personalizados facilitan la toma de decisiones pedagógicas'
-  },
-  {
-    icon: '2️⃣',
-    title: 'Evaluación por Competencias',
-    description: 'La retroalimentación inmediata genera rutas de mejora para cada alumno. Evaluamos el aprendizaje en acción, midiendo pensamiento crítico y resolución de problemas. Los estudiantes no solo memorizan, aprenden a aplicar lo que saben en contextos reales.'
-  },
-  {
-    icon: '3️⃣',
-    title: 'Evaluación Final y Simulacros',
-    description: 'Cerramos el proceso con pruebas integrales y simulacros tipo Saber. El sistema predice dificultades y entrena a los estudiantes con confianza y estrategia.'
-  }
-];
 
 // Enfoque por niveles, extraído del PDF.
 const enfoqueNiveles = [
@@ -40,8 +23,18 @@ const enfoqueNiveles = [
 ];
 ---
 
-<section id="seguimiento-hero" class="py-5 sm:py-24">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section id="seguimiento-hero" class="py-5 sm:py-24 flex flex-row">
+<div class="py-6 md:order-1 hidden md:block max-w-1/4 flex">
+  <Picture
+    src={examBoyImage}
+    alt="Jovén realizando examen muy tranquilo"
+    widths={[200, 400, 600]}
+    sizes="(max-width: 800px) 100vw, 620px"
+    loading="eager"
+    format="avif"
+  />
+</div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex">
     <div class="mx-auto relative overflow-hidden bg-indigo-50 rounded-3xl shadow-2xl py-20 sm:py-10">
       <div class="text-center px-4">
         <p class="font-semibold text-indigo-700">Seguimiento Académico</p>
@@ -56,48 +49,22 @@ const enfoqueNiveles = [
   </div>
 </section>
 
-<section id="seguimiento-etapas" class="py-5 sm:py-24">
+<section id="seguimiento-etapas" class="py-5 sm:py-4">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-3xl text-center">
-      <h3 class="text-2xl font-bold text-slate-900">Un Proceso Estratégico para la Mejora Continua</h3>
+      <h2 class="mt-4 text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter text-slate-900">Un Proceso Estratégico para la Mejora Continua</h2>
       <p class="mt-4 text-lg text-slate-600">
         Nuestro sistema es una herramienta estratégica que asegura la preparación efectiva para los retos académicos nacionales.
       </p>
     </div>
-
-    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {etapas.map(item => (
-        <div class="rounded-2xl border border-slate-200 p-6 shadow-sm text-center">
-          <span class="text-4xl">{item.icon}</span>
-          <h4 class="mt-4 text-xl font-semibold text-slate-900">{item.title}</h4>
-          <p class="mt-3 text-slate-600">{item.description}</p>
-        </div>
-      ))}
-    </div>
   </div>
 </section>
-
-<section id="seguimiento-visuals" class="py-5 sm:py-12 bg-slate-50">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="aspect-w-3 aspect-h-2">
-                <img class="w-full h-full object-cover rounded-2xl shadow-md" src="https://placehold.co/600x400/e0e7ff/4338ca?text=Etapa+Diagn%C3%B3stica" alt="Placeholder para la etapa diagnóstica del seguimiento académico">
-            </div>
-            <div class="aspect-w-3 aspect-h-2">
-                <img class="w-full h-full object-cover rounded-2xl shadow-md" src="https://placehold.co/600x400/e0e7ff/4338ca?text=Evaluaci%C3%B3n+por+Competencias" alt="Placeholder para la evaluación por competencias">
-            </div>
-            <div class="aspect-w-3 aspect-h-2">
-                <img class="w-full h-full object-cover rounded-2xl shadow-md" src="https://placehold.co/600x400/e0e7ff/4338ca?text=Resultados+Sobresalientes" alt="Placeholder para los resultados de las Pruebas Saber">
-            </div>
-        </div>
-    </div>
-</section>
-
+<Pasos/>
 
 <section id="seguimiento-enfoque" class="py-5 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-3xl text-center">
-      <h3 class="text-2xl font-bold text-slate-900">Enfoque Pedagógico por Niveles</h3>
+      <h2 class="mt-4 text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter text-slate-900">Enfoque Pedagógico por Niveles</h2>
       <p class="mt-4 text-lg text-slate-600">
         Preparamos a los estudiantes para los grandes retos con pruebas integrales adaptadas a cada ciclo escolar.
       </p>

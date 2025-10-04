@@ -1,0 +1,66 @@
+---
+import { Picture } from "astro:assets";
+import paso1 from "@/assets/images/paso-1.png"
+import paso2 from "@/assets/images/paso-2.png"
+import paso3 from "@/assets/images/paso-3.png"
+
+const etapas = [
+  {
+    id:"1",
+    image: paso1,
+    title: 'Evaluación Diagnóstica',
+    description: 'Con nuestras pruebas iniciales, los colegios descubren el punto de partida real de cada estudiante. Identificamos fortalezas y vacíos para diseñar planes de nivelación efectivos desde el comienzo. Los reportes personalizados facilitan la toma de decisiones pedagógicas'
+  },
+  {
+    id:"2",
+    image: paso2,
+    title: 'Evaluación por Competencias',
+    description: 'La retroalimentación inmediata genera rutas de mejora para cada alumno. Evaluamos el aprendizaje en acción, midiendo pensamiento crítico y resolución de problemas. Los estudiantes no solo memorizan, aprenden a aplicar lo que saben en contextos reales.'
+  },
+  {
+    id:"3",
+    image: paso3,
+    title: 'Evaluación Final y Simulacros',
+    description: 'Cerramos el proceso con pruebas integrales y simulacros tipo Saber. El sistema predice dificultades y entrena a los estudiantes con confianza y estrategia.'
+  }
+];
+
+---
+<section id="pasos-seguimiento-academico" class="space-y-4">
+
+  <!-- Paso 1: imagen a la derecha (texto izquierdo) -->
+  <div class="grid md:grid-cols-3 items-center gap-6 pt-4 pb-4 md:pt-4 md:pb-4">
+    <div class="md:col-span-2 md:text-left md:order-1">
+  <h1 class="text-2xl lg:text-2xl xl:text-4xl font-bold lg:tracking-tight xl:tracking-tighter">{etapas[0].title}</h1>
+      <p class="text-lg mt-4 text-black max-w-xl">{etapas[0].description}</p>
+    </div>
+  <div class="py-6 hidden md:flex md:col-span-1 md:order-2 justify-center">
+      <Picture src={etapas[0].image} alt="Niño leyendo, preparandose para el futuro." widths={[200,400,600]} sizes="(max-width: 600px) 100vw, 600px" loading="eager" format="avif" />
+    </div>
+  </div>
+
+  <!-- Paso 2: imagen a la izquierda (texto derecho) -->
+  <div class="grid md:grid-cols-3 items-center gap-6 pt-4 pb-4 md:pt-4 md:pb-4">
+  <div class="py-6 hidden md:flex md:col-span-1 md:order-1 justify-center">
+      <Picture src={etapas[1].image} alt="Niño leyendo, preparandose para el futuro." widths={[200,400,600]} sizes="(max-width: 600px) 100vw, 600px" loading="eager" format="avif" />
+    </div>
+    <div class="md:col-span-2 md:order-2">
+      <div class="flex flex-col items-end md:items-end md:text-right">
+  <h1 class="text-2xl lg:text-2xl xl:text-4xl font-bold lg:tracking-tight xl:tracking-tighter">{etapas[1].title}</h1>
+        <p class="text-lg mt-4 text-black max-w-xl">{etapas[1].description}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paso 3: imagen a la derecha (texto izquierdo) -->
+  <div class="grid md:grid-cols-3 items-center gap-6 pt-4 pb-4 md:pt-4 md:pb-4">
+    <div class="md:col-span-2 md:text-left md:order-1">
+  <h1 class="text-2xl lg:text-2xl xl:text-4xl font-bold lg:tracking-tight xl:tracking-tighter">{etapas[2].title}</h1>
+      <p class="text-lg mt-4 text-black max-w-xl">{etapas[2].description}</p>
+    </div>
+  <div class="py-6 hidden md:flex md:col-span-1 md:order-2 justify-center">
+      <Picture src={etapas[2].image} alt="Niño leyendo, preparandose para el futuro." widths={[200,400,600]} sizes="(max-width: 600px) 100vw, 600px" loading="eager" format="avif" />
+    </div>
+  </div>
+
+</section>
