@@ -1,6 +1,6 @@
 ---
-import libro1Url    from '@/assets/SVG/libro1.svg?url'
-import libro2Url    from '@/assets/SVG/libro2.svg?url'
+import libro1Url     from '@/assets/SVG/libro1.svg?url'
+import libro2Url     from '@/assets/SVG/libro2.svg?url'
 import libroVacioUrl from '@/assets/SVG/libro_vacio.svg?url'
 
 import t1_l1Url from '@/assets/SVG/t1_libro1.svg?url'
@@ -45,10 +45,42 @@ const {
   f3Delay = 1800,  
   f4Delay = 1950,  
 
-  b1x = 6,  b1y = 18, b1w = 42,     
-  b2x = 62, b2y = 18, b2w = 42,     
-  ex  = 34, ey  = 50, ew  = 42,     
+  b1x = 6,  b1y = 18, b1w = 42,     // book1
+  b2x = 62, b2y = 18, b2w = 42,     // book2
+  ex  = 34, ey  = 50, ew  = 42,     // empty book
 } = Astro.props
+
+// l1-t2 (book1: left:24%; top:42%; width:74%)
+const f1FromX = b1x + b1w * 0.24;
+const f1FromY = b1y + b1w * 0.42;
+const f1FromW = b1w * 0.74;
+// slot-a (bookEmpty: left:22%; top:20%)
+const f1ToX = ex + ew * 0.22;
+const f1ToY = ey + ew * 0.20;
+
+// l1-t3 (book1: left:24%; top:65%; width:72%)
+const f2FromX = b1x + b1w * 0.24;
+const f2FromY = b1y + b1w * 0.65;
+const f2FromW = b1w * 0.72;
+// slot-b (bookEmpty: left:22%; top:42%)
+const f2ToX = ex + ew * 0.22;
+const f2ToY = ey + ew * 0.48;
+
+// l2-t1 (book2: left:24%; top:20%; width:72%)
+const f3FromX = b2x + b2w * 0.24;
+const f3FromY = b2y + b2w * 0.20;
+const f3FromW = b2w * 0.72;
+// slot-c (bookEmpty: left:22%; top:56%)
+const f3ToX = ex + ew * 0.22;
+const f3ToY = ey + ew * 0.62;
+
+// l2-t4 (book2: left:24%; top:78%; width:68%)
+const f4FromX = b2x + b2w * 0.24;
+const f4FromY = b2y + b2w * 0.78;
+const f4FromW = b2w * 0.68;
+// slot-d (bookEmpty: left:22%; top:78%)
+const f4ToX = ex + ew * 0.22;
+const f4ToY = ey + ew * 0.84;
 ---
 
 <div class={`relative w-full h-full ${className}`}>
@@ -92,18 +124,26 @@ const {
       <div id="slot-d" class="slot" style="left:22%; top:78%; width:76%; height:8%;"></div>
     </div>
 
+    {/* Flyers con posiciones calculadas dentro del componente */}
     <img src={t2_l1Url} alt="" draggable="false" class="flyer"
-         data-from="#l1-t2" data-to="#slot-a"
-         style={`--dur:${fDur}ms; --delay:${f1Delay}ms;`} loading="lazy" decoding="async" />
+         style={`--dur:${fDur}ms; --delay:${f1Delay}ms;
+                 --from-left:${f1FromX}%; --from-top:${f1FromY}%; --from-w:${f1FromW}%;
+                 --to-left:${f1ToX}%;   --to-top:${f1ToY}%;`} loading="lazy" decoding="async" />
+
     <img src={t3_l1Url} alt="" draggable="false" class="flyer"
-         data-from="#l1-t3" data-to="#slot-b"
-         style={`--dur:${fDur}ms; --delay:${f2Delay}ms;`} loading="lazy" decoding="async" />
+         style={`--dur:${fDur}ms; --delay:${f2Delay}ms;
+                 --from-left:${f2FromX}%; --from-top:${f2FromY}%; --from-w:${f2FromW}%;
+                 --to-left:${f2ToX}%;   --to-top:${f2ToY}%;`} loading="lazy" decoding="async" />
+
     <img src={t1_l2Url} alt="" draggable="false" class="flyer"
-         data-from="#l2-t1" data-to="#slot-c"
-         style={`--dur:${fDur}ms; --delay:${f3Delay}ms;`} loading="lazy" decoding="async" />
+         style={`--dur:${fDur}ms; --delay:${f3Delay}ms;
+                 --from-left:${f3FromX}%; --from-top:${f3FromY}%; --from-w:${f3FromW}%;
+                 --to-left:${f3ToX}%;   --to-top:${f3ToY}%;`} loading="lazy" decoding="async" />
+
     <img src={t4_l2Url} alt="" draggable="false" class="flyer"
-         data-from="#l2-t4" data-to="#slot-d"
-         style={`--dur:${fDur}ms; --delay:${f4Delay}ms;`} loading="lazy" decoding="async" />
+         style={`--dur:${fDur}ms; --delay:${f4Delay}ms;
+                 --from-left:${f4FromX}%; --from-top:${f4FromY}%; --from-w:${f4FromW}%;
+                 --to-left:${f4ToX}%;   --to-top:${f4ToY}%;`} loading="lazy" decoding="async" />
 
   </div>
 </div>
@@ -142,10 +182,9 @@ const {
   }
 
   .flyer{
-    position:absolute; opacity:0; z-index: 10; pointer-events:none;
+    position:absolute; opacity:0; z-index:10; pointer-events:none;
     filter: drop-shadow(0 10px 20px rgba(2,6,23,.14));
-
-    left: var(--from-left, 0px); top: var(--from-top, 0px); width: var(--from-w, auto);
+    left: var(--from-left); top: var(--from-top); width: var(--from-w, auto);
     animation: fly var(--dur) cubic-bezier(.22,.9,.3,1.05) forwards;
     animation-delay: var(--delay);
   }
@@ -159,41 +198,3 @@ const {
     .pop, .label, .flyer { animation: none !important; opacity: 1 !important; transform: none !important; }
   }
 </style>
-
-<script is:inline>
-
-  (function(){
-    const onReady = () => {
-      const scene = document.querySelector('.scene');
-      if(!scene) return;
-      const sceneRect = scene.getBoundingClientRect();
-
-      const flyers = Array.from(document.querySelectorAll('.flyer'));
-      flyers.forEach(f => {
-        const fromSel = f.getAttribute('data-from');
-        const toSel   = f.getAttribute('data-to');
-        const fromEl  = fromSel ? document.querySelector(fromSel) : null;
-        const toEl    = toSel   ? document.querySelector(toSel)   : null;
-        if(!fromEl || !toEl) return;
-
-        const fromRect = fromEl.getBoundingClientRect();
-        const toRect   = toEl.getBoundingClientRect();
-
-        f.style.setProperty('--from-w', fromRect.width + 'px');
-
-        const fromLeft = fromRect.left - sceneRect.left;
-        const fromTop  = fromRect.top  - sceneRect.top;
-        const toLeft   = toRect.left   - sceneRect.left;
-        const toTop    = toRect.top    - sceneRect.top;
-
-        f.style.setProperty('--from-left', fromLeft + 'px');
-        f.style.setProperty('--from-top',  fromTop  + 'px');
-        f.style.setProperty('--to-left',   toLeft   + 'px');
-        f.style.setProperty('--to-top',    toTop    + 'px');
-      });
-    };
-
-    if (document.readyState === 'complete') onReady();
-    else window.addEventListener('load', onReady, { once: true });
-  })();
-</script>
