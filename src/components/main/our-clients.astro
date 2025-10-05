@@ -1,0 +1,37 @@
+		<!-- Nuestros Clientes - Ticker -->
+		<section class="mt-8 overflow-hidden">
+		  <div class="bg-slate-50 py-4">
+		    <div class="max-w-screen-xl mx-auto px-4">
+		      <h3 class="text-lg font-semibold text-slate-800 mb-3">Nuestros Clientes</h3>
+		      <div class="relative">
+		        <div class="whitespace-nowrap animate-ticker text-slate-700">
+		          <span class="inline-block px-6">Colegio Mayor Alférez Real Pance Fundación Mercedes Herrera Mora.</span>
+		          <span class="inline-block px-6">Colegio comercial de Palmira Fundación Mercedes Herrera Mora.</span>
+		          <span class="inline-block px-6">Colegio Los Ángeles de San Fernando Fundación Mercedes Herrera Mora.</span>
+		          <span class="inline-block px-6">Institución Educativa Politécnico (Institución Oficial)</span>
+		          <span class="inline-block px-6">Institución Educativa General Vásquez Cobo (Institución Oficial)</span>
+		          <span class="inline-block px-6">Colegio Real Holandés Colegio de Cobertura</span>
+		          <span class="inline-block px-6">Proyecto secretaría de educación Municipio de Santiago de Cali Etnoeducación en convenio con la Fundación FUNDACESAR año 2018.</span>
+		          <span class="inline-block px-6">Colegio Mayor del Norte sede Floralia y Pizamos Institución de Cobertura Educativa.</span>
+		          <span class="inline-block px-6">Somos una entidad que llevamos más de 20 años en el mercado contribuyendo con la educación en toda la República de Colombia.</span>
+		          <!-- duplicar para efecto infinito -->
+		          <span class="inline-block px-6">Colegio Mayor Alférez Real Pance Fundación Mercedes Herrera Mora.</span>
+		          <span class="inline-block px-6">Colegio comercial de Palmira Fundación Mercedes Herrera Mora.</span>
+		          <span class="inline-block px-6">Colegio Los Ángeles de San Fernando Fundación Mercedes Herrera Mora.</span>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+
+		<style>
+		@keyframes ticker {
+		  0% { transform: translateX(0%); }
+		  100% { transform: translateX(-50%); }
+		}
+		.animate-ticker {
+		  display: inline-block;
+		  padding-left: 100%;
+		  animation: ticker 30s linear infinite;
+		}
+		</style>

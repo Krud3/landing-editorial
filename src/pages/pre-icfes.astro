@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import Container from "@/components/container.astro"
+import Hero from "@/components/pre-icfes/hero.astro"
+import WhatIs from "@/components/pre-icfes/what-is.astro"
+import Products from "@/components/pre-icfes/products.astro"
+import Beneficios from "@/components/pre-icfes/beneficios.astro"
+import Diferencial from "@/components/pre-icfes/diferencial.astro"
+---
+
+<Layout title="EMHM-pre-icfes" content="Contribuimos con la mejora y los procesos para llevar acabo un buen ICFES. ¡Conócenos!">
+	<Container>
+    <Hero/>
+    <WhatIs/>
+    <Products/>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-stretch">
+      <div>
+        <Beneficios/>
+      </div>
+      <div>
+        <Diferencial/>
+      </div>
+    </div>
+  </Container>
+</Layout>

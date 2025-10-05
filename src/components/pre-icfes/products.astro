@@ -1,0 +1,106 @@
+---
+import Picture from "astro/components/Picture.astro"
+import naturalesImage from "@/assets/images/open-book/naturales.png"
+import Link from "@/components/ui/link.astro"
+import heroImage from "@/assets/images/portada-competencia-lectora.png";
+---
+
+<section
+  id="pre-icfes-products"
+  aria-label="Preparación para el icfes emhm"
+  class="py-5 sm:py-12"
+>
+      <h1 class="text-5xl lg:text-6xl  xl:text-7xl font-bold text-center">
+        <span class="text-black">Nuestros </span>
+
+        <span class="text-indigo-700 italic">productos</span>
+      </h1>
+  <div
+  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+
+    <div class="py-6 md:order-1 hidden md:block">
+      <Picture
+        src={naturalesImage}
+        alt="Niño leyendo, preparandose para el futuro."
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="eager"
+        format="avif"
+      />
+    </div>
+    <div>
+      <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold">
+        Libros de PreICFES: la preparación más
+        <span class="text-indigo-700 italic">completa y actualizada.</span>
+      </h2>
+      <p class="text-lg mt-4 text-black max-w-xl">
+        Nuestros Libros de <b>PreICFES</b> están diseñados con la más alta calidad pedagógica, alineados directamente con las competencias y componentes definidos en las guías de orientación del ICFES.
+        No son simples libros de repaso, sino herramientas de preparación integral que desarrollan en los estudiantes las mismas habilidades que serán evaluadas en las <b>Pruebas Saber 11°</b>.
+      </p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <Link
+          href="#"
+          href="/contactanos"
+          target="_blank"
+          class="flex gap-1 items-center justify-center"
+          style="indigo"
+          rel="noopener">
+          <div class="flex items-center gap-2">
+            <span class="text-sm">Solicita una demostración</span>
+          </div>
+        </Link>
+      </div>
+    </div>
+
+  </div>
+  <div
+    class="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-8 pt-16 pb-5 md:pt-12 md:pb-5"
+  >
+    <div class="py-6 overflow-visible">
+      <Picture
+        src={heroImage}
+        alt="Libro de competencia lectora, básica primaria, grado tercero."
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="eager"
+        format="avif"
+      />
+    </div>
+
+    <div>
+      <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold">
+        <span class="text-indigo-700 italic">Simulacros </span>
+        impresos y digitales:
+        
+      </h2>
+      <p class="text-lg mt-4 text-black max-w-xl mx-auto lg:mx-0">
+        Nuestros <b>Simulacros PreICFES</b>, en versión impresa y digital, son diseñados como una experiencia auténtica de evaluación, replicando con exactitud la estructura, la extensión, el nivel de complejidad, el tipo de preguntas y los tiempos de aplicación de la <b>Prueba Saber 11°</b>.
+      </p>
+    </div>
+  </div>
+    <div
+  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+
+    <div class="py-6 md:order-1 hidden md:block">
+      <Picture
+        src={naturalesImage}
+        alt="Niño leyendo, preparandose para el futuro."
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="eager"
+        format="avif"
+      />
+    </div>
+    <div>
+      <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold">
+        Plataforma de 
+        <span class="text-indigo-700 italic">análisis</span>
+        de resultados
+      </h2>
+      <p class="text-lg mt-4 text-black max-w-xl">
+        Nuestros reportes entregan <b>gráficos, comparativos y retroalimentación clara</b>, que permiten a docentes planear estrategias, a estudiantes identificar fortalezas y debilidades, y a los padres acompañar de manera efectiva. Así, la institución cuenta con una herramienta poderosa que no solo mide resultados, sino que impulsa mejoras reales en el desempeño frente a las <b>Pruebas Saber</b>.
+      </p>
+    </div>
+
+  </div>
+</section>
