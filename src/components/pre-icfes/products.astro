@@ -1,8 +1,9 @@
 ---
 import Picture from "astro/components/Picture.astro"
-import naturalesImage from "@/assets/images/open-book/naturales.png"
+import naturalesImage from "@/assets/images/preicfes-book.png"
 import Link from "@/components/ui/link.astro"
-import heroImage from "@/assets/images/portada-competencia-lectora.png";
+import heroImage from "@/assets/images/cuestionario-icfes.png";
+import resultadosImage from "@/assets/images/resultados.png"
 ---
 
 <section
@@ -21,7 +22,7 @@ import heroImage from "@/assets/images/portada-competencia-lectora.png";
     <div class="py-6 md:order-1 hidden md:block">
       <Picture
         src={naturalesImage}
-        alt="Niño leyendo, preparandose para el futuro."
+        alt="Portada del libro preparación para el icfes."
         widths={[200, 400, 600]}
         sizes="(max-width: 800px) 100vw, 620px"
         loading="eager"
@@ -59,7 +60,7 @@ import heroImage from "@/assets/images/portada-competencia-lectora.png";
     <div class="py-6 overflow-visible">
       <Picture
         src={heroImage}
-        alt="Libro de competencia lectora, básica primaria, grado tercero."
+        alt="Ejemplo de un simulacro."
         widths={[200, 400, 600]}
         sizes="(max-width: 800px) 100vw, 620px"
         loading="eager"
@@ -83,8 +84,8 @@ import heroImage from "@/assets/images/portada-competencia-lectora.png";
 
     <div class="py-6 md:order-1 hidden md:block">
       <Picture
-        src={naturalesImage}
-        alt="Niño leyendo, preparandose para el futuro."
+        src={resultadosImage}
+        alt="Resultados de una evaluación sin componentes"
         widths={[200, 400, 600]}
         sizes="(max-width: 800px) 100vw, 620px"
         loading="eager"
