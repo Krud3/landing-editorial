@@ -2,7 +2,7 @@
 title: 'Castellano Segundo'
 subject: 'castellano'  
 grade: 'Segundo'
-gradeOrder: 3
+gradeOrder: 2
 description: 'Manejo del lenguaje para un buen trabajo en equipo, como también manejo del lenguaje asertivo y desarrollo del pensamiento. Desarrollo con el uso adecuado de las herramientas comunicativas.'
 tags: ['abecedario', 'palabras', 'lenguaje', 'Segundo']
 ---

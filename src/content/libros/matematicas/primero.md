@@ -1,8 +1,8 @@
 ---
 title: 'Matemática Primero'
-subject: 'matematica-primaria'  
+subject: 'matematicas'  
 grade: 'Primero'
-gradeOrder: 2
+gradeOrder: 1
 description: 'El texto está orientado a desarrollar las habilidades básicas de pensamiento requeridas para la solución de problemas, dar significado, comunicar, construir, modelar, y usar el conocimiento matemático en un contexto variado de forma lúdica y dinámica.'
 tags: [ 'matematica', 'primero']
 ---

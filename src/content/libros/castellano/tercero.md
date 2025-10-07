@@ -1,25 +1,49 @@
 ---
-title: 'Castellano Tercero'
-subject: 'castellano'  
-grade: 'Tercero'
-gradeOrder: 4
-description: 'A través del lenguaje oral y escrito podemos expresar nuestros sentimientos, ideas, sueños, ilusiones y metas, también nos ayuda a generar las posibilidades de conocimiento para explicar, reconstruir o trasformar la realidad en cualquier contexto.'
-tags: ['sinonimos', 'palabras', 'antonimos', 'lenguaje', 'Tercero']
+title: "Lengua Castellana Tercero"
+subject: "castellano"
+grade: "Tercero"
+gradeOrder: 3
+description: "Lengua Castellana Tercero enfatiza comprensión lectora básica, ortografía inicial y escritura de textos narrativos y descriptivos."
+tags: ["castellano", "tercero", "lectura", "escritura", "gramática", "literatura"]
 ---
 
 ## Contenido
 
-* Uso de sinónimos y antónimos.
-* El sustantivo.
-* El uso de la G y la J.
-* La historieta.
-* Los determinantes del adjetivo.
-* La sílaba y el acento.
-* La fábula.
-* Palabras polisémicas.
-* El verbo.
-* El uso de las terminaciones -ción con C y -sión con S.
-* La poesía.
-* Palabras primitivas y compuestas.
-* La oración.
-* El uso de la letra Y y LL.
+* Producción textual
+* Texto Narrativo
+* Sustantivo
+* Artículos
+* Adjetivo
+* Género
+* La comunicación
+* Letras
+* Acento
+* Adjetivos
+* La descripción
+* El verbo
+* Reglas ortográficas
+* Tradición oral
+* Mitos y leyendas
+* Campos semánticos
+* Prefijos y sufijos
+* Palabras simples y compuestas
+* La oración
+* Sinónimos y antónimos
+* Texto informativo
+* Conectores
+* Medios de comunicación
+* Uso del punto
+* Representaciones gráficas ylíricas
+* Género lírico
+* Figuras literarias
+* Texto icónico
+* Señales de tránsito
+* La historieta
+* El párrafo
+* Uso de la M y la N
+* Representación gráfica y corporal
+* Texto instructivo
+* Palabras homófonas
+* El teatro
+* Uso de la B y la V
+* Mapa conceptual y mental

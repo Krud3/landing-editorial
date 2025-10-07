@@ -16,7 +16,6 @@ const { subjectSlug } = Astro.params;
 const asignaturaActual = await getEntry('asignaturas', subjectSlug!);
 
 const todosLosLibros = await getCollection('libros');
-
 const librosPorAsignatura = todosLosLibros
   .filter((libro: any) => libro.data.subject.id === subjectSlug)
   .sort((a: any, b: any) => (a.data.gradeOrder ?? 0) - (b.data.gradeOrder ?? 0)); 

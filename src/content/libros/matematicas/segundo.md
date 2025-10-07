@@ -1,8 +1,8 @@
 ---
 title: 'Matemática Segundo'
-subject: 'matematica-primaria'  
+subject: 'matematicas'  
 grade: 'Segundo'
-gradeOrder: 3
+gradeOrder: 2
 description: 'Facilitar los procesos de desarrollo del pensamiento matemático, suministrando al estudiante los fundamentos lógicos, conceptuales y procedimientales de la matemática, para un desempeño adecuado en su proyecto de vida.'
 tags: [ 'matematica', 'Segundo']
 ---

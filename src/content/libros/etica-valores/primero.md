@@ -2,7 +2,7 @@
 title: 'Ética y Valores Primero'
 subject: 'etica-valores'  
 grade: 'Primero'
-gradeOrder: 2
+gradeOrder: 1
 description: 'El texto tiene como objetivo sembrar en los niños cimientos establecidos en valores, los cuales serán desarrollados permanentemente en una relación de padre, e hijo e institución realizando actividades representativas como obras de teatro, títeres y dinámicas.'
 tags: [ 'etica', 'primero']
 ---

@@ -1,8 +1,8 @@
 ---
 title: 'Ciencias Naturales Primero'
-subject: 'ciencias-naturales-primaria'  
+subject: 'ciencias-naturales'  
 grade: 'Primero'
-gradeOrder: 2
+gradeOrder: 1
 description: 'Los estudiantes están en capacidad de describir las características de los seres vivos como también identificar las plantas como seres vivos.'
 tags: [ 'naturales', 'primero']
 ---

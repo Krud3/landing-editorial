@@ -1,25 +1,36 @@
 ---
-title: 'Ética y Valores Tercero'
-subject: 'etica-valores'  
-grade: 'Tercero'
-gradeOrder: 4
-description: 'Favorecer el proceso de autovaloración y apoyar mediante herramientas prácticas el adecuado manejo de situaciones cotidianas a través de lecciones dinámicas donde permanentemente el estudiante estará desarrollando procesos de autoexploración y autoconocimiento dentro de un ambiente de libertad, respeto y confianza.'
-tags: [ 'etica', 'Tercero']
+title: "Ética y Valores Tercero"
+subject: "etica-valores"
+grade: "Tercero"
+gradeOrder: 3
+description: "El curso de Ética y Valores Tercero busca fortalecer la formación integral del estudiante mediante la reflexión sobre sus acciones, emociones y relaciones con los demás. A través del diálogo, el respeto y la práctica de valores, se promueve una convivencia pacífica y el desarrollo de una identidad ética y responsable."
+tags: ["ética", "valores", "tercero", "convivencia", "respeto", "responsabilidad"]
 ---
 
 ## Contenido
 
-* Nuestro fantástico primer día.
-* Conocimiento de sí mismo.
-* Las profesiones.
-* Aprovechamiento del tiempo libre.
-* Mi relación con Dios.
-* Manejo de las diferencias y conflictos.
-* El sentido de la amistad.
-* El manejo del tiempo escolar.
-* Métodos de estudio.
-* Toma de decisiones.
-* El trabajo en equipo.
-* La solidaridad.
-* ¿Cómo puedo contribuir al mejoramiento del comportamiento de las personas de mi ciudad?.
-* El uso de la letra Y y LL.
+* El ser
+* La autoestima
+* Mis sueños
+* Mis metas
+* Toma de decisiones
+* La motivación
+* Aporvechar el tiempo
+* La familia
+* Mis acciones
+* Maltrato familiar
+* Los valores
+* Normas en familia
+* La hoenstidad
+* Mi colegio
+* Normas en mi colegio
+* Buena convivencia
+* Relaciones interpersonales en el colegio
+* El buen trato
+* Los conflictos
+* El mediador escolar
+* Mi entorno
+* Matoneo escolar
+* Las necesidades de otras personas
+* La solidaridad
+* El trabajo en equipo

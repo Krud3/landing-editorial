@@ -1,8 +1,8 @@
 ---
 title: 'Ciencias Naturales Segundo'
-subject: 'ciencias-naturales-primaria'  
+subject: 'ciencias-naturales'  
 grade: 'Segundo'
-gradeOrder: 3
+gradeOrder: 2
 description: 'Fomentar en los estudiantes una cultura científica a partir de la interacción con los elementos que forman parte de su entorno contribuyendo de una manera consistente y organizada en el mejoramiento del ser y la sociedad.'
 tags: [ 'naturales', 'Segundo']
 ---
