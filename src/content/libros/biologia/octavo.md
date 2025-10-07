@@ -7,6 +7,8 @@ description: "Biología Octavo profundiza en la genética, el sistema nervioso y
 tags: ['biología', 'genética', 'neurociencia', 'fisiología', 'herencia']
 ---
 
+## Contenido
+
 - La genética y la transmisión de caracteres hereditarios
 - Las leyes de mendel
 - Las mutaciones

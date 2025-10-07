@@ -7,6 +7,8 @@ description: "Ciencias Naturales Noveno integra conocimientos de biología, quí
 tags: ['ciencias-naturales', 'biología', 'química', 'física', 'geología']
 ---
 
+## Contenido
+
 - La herencia
 - Transmisión de la herencia según las leyes de mendel
 - El origen de la vida

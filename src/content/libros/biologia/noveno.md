@@ -7,6 +7,8 @@ description: "Biología Noveno aborda la herencia, evolución, taxonomía, micro
 tags: ['biologia', 'genetica', 'evolucion', 'microbiologia', 'taxonomia']
 ---
 
+## Contenido
+
 - La herencia
 - Transmisión de la herencia según las leyes de mendel
 - El origen de la vida

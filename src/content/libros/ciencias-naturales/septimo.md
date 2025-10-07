@@ -7,6 +7,8 @@ description: "Ciencias Naturales Séptimo estudia los procesos vitales, la repro
 tags: ['ciencias-naturales', 'biología', 'química', 'medio ambiente']
 ---
 
+## Contenido
+
 - Respiración en los seres vivos
 - Respiración en plantas
 - La fotosíntesis

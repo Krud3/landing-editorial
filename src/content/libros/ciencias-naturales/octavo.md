@@ -7,6 +7,8 @@ description: "Ciencias Naturales Octavo profundiza en la genética, el sistema n
 tags: ['ciencias-naturales', 'biología', 'genética', 'medio ambiente', 'anatomía']
 ---
 
+## Contenido
+
 - Metodos anticonceptivos
 - Enfermedades de transmisión sexual
 - Medios de transmisión sexual

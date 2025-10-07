@@ -7,6 +7,8 @@ description: "Biología Séptimo estudia la respiración, excreción, reproducci
 tags: ['biología', 'reproducción', 'ecología', 'cuerpo humano', 'medio ambiente']
 ---
 
+## Contenido
+
 - Respiración en los seres vivos
 - Respiración en plantas
 - La fotosíntesis

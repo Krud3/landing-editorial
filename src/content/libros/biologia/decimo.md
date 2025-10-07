@@ -7,6 +7,8 @@ description: "Biología Décimo estudia la célula, la nutrición, la circulaci�
 tags: ['biologia', 'fisiologia', 'anatomia', 'ecologia', 'ciencias-naturales']
 ---
 
+## Contenido
+
 - La célula
 - Clasificación de las células
 - Célula animal y vegetal

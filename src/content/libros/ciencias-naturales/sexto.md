@@ -7,6 +7,8 @@ description: "Ciencias Naturales Sexto aborda el origen del universo, la célula
 tags: ['ciencias-naturales', 'biología', 'química', 'física', 'astronomía']
 ---
 
+## Contenido
+
 - Origen del universo y la vida
 - Origen de la Tierra
 - Filogenia
