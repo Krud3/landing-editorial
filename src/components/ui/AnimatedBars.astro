@@ -7,7 +7,7 @@ export interface Props {
   lineDelayExtraMs?: number 
 }
 
-const vals = (Astro.props.values ?? [30, 45, 70, 50, 85]).map(v =>
+const vals = (Astro.props.values ?? [30, 45, 60, 80, 90]).map(v =>
   Math.max(0, Math.min(100, v))
 );
 const n = vals.length;
