@@ -1,6 +1,6 @@
 ---
 import Link from "@/components/ui/link.astro";
-
+import pdfDemo from "@/assets/pdf/demo-reporte.pdf"
 // --- DATOS EXTRAÍDOS DEL PDF DE PRESENTACIÓN ---
 
 // Metodología Pedagógica: Conecta el aprendizaje con la realidad.
@@ -189,8 +189,8 @@ const oferta = {
       
       <div class="mt-8 text-center">
         <Link
-          href="/contactanos"
-          target="_blank"
+          href={pdfDemo}
+          download="informe-demo.pdf"
           style="indigo"
           class="rounded-md px-6 py-3 text-base shadow-md lg:text-1xl xl:text-2xl"
         >
