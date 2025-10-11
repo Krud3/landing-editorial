@@ -1,5 +1,5 @@
 ---
 title: 'Filosofía'
-coverImage: '@/assets/images/front-cover/etica.png'
-secondImage: '@/assets/images/open-book/etica.png'
+coverImage: '@/assets/images/front-cover/filosofia.png'
+secondImage: '@/assets/images/open-book/filosofia.png'
 ---

@@ -1,5 +1,5 @@
 ---
 title: 'Física'
-coverImage: '@/assets/images/front-cover/etica.png'
-secondImage: '@/assets/images/open-book/etica.png'
+coverImage: '@/assets/images/front-cover/fisica.png'
+secondImage: '@/assets/images/open-book/fisica.png'
 ---

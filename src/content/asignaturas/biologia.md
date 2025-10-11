@@ -1,5 +1,5 @@
 ---
 title: 'Biología'
-coverImage: '@/assets/images/front-cover/aprestamiento.png'
-secondImage: '@/assets/images/open-book/aprestamiento.png'
+coverImage: '@/assets/images/front-cover/biologia.png'
+secondImage: '@/assets/images/open-book/biologia.png'
 ---
