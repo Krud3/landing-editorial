@@ -6,20 +6,39 @@ import WhatIs from "@/components/pre-icfes/what-is.astro"
 import Products from "@/components/pre-icfes/products.astro"
 import Beneficios from "@/components/pre-icfes/beneficios.astro"
 import Diferencial from "@/components/pre-icfes/diferencial.astro"
+
+const title = "Pre-ICFES: libros, simulacros y análisis de resultados | Editorial EMHM";
+const description = "Preparación alineada a Prueba Saber 11°: libros Pre-ICFES, simulacros impresos/digitales y plataforma de análisis con reportes accionables.";
+const canonical = new URL("/pre-icfes", Astro.site).toString();
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type":"ListItem", position:1, name:"Inicio", item: new URL("/", Astro.site).toString() },
+    { "@type":"ListItem", position:2, name:"Pre-ICFES", item: canonical }
+  ]
+};
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title, url: canonical, description
+};
 ---
 
-<Layout title="EMHM-pre-icfes" content="Contribuimos con la mejora y los procesos para llevar acabo un buen ICFES. ¡Conócenos!">
-	<Container>
+<Layout title={title} content={description} canonical={canonical}>
+  <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
+  <script type="application/ld+json">{JSON.stringify(webPageLd)}</script>
+  <Container>
     <Hero/>
     <WhatIs/>
     <Products/>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-stretch">
-      <div>
-        <Beneficios/>
-      </div>
-      <div>
-        <Diferencial/>
-      </div>
+      <div><Beneficios/></div>
+      <div><Diferencial/></div>
     </div>
+    <p class="mt-6 text-slate-700 text-center">
+      <a class="underline" href="/contactanos">Solicita una demo</a>
+    </p>
   </Container>
 </Layout>

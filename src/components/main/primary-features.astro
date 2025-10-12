@@ -97,14 +97,15 @@ const {
               id={`pf-tab-${i}`}
               aria-controls={`pf-panel-${i}`}
               aria-selected="false"
-              tabindex="-1"
+              aria-selected={i === 0 ? 'true' : 'false'}
+              tabindex={i === 0 ? 0 : -1}
             >
               <h3 class="flex items-center gap-3 font-display text-lg">
                 <span data-dot aria-hidden="true"
                   class="hidden h-2 w-2 shrink-0 rounded-full bg-amber-500 ring-2 ring-amber-500"></span>
                 <span data-title class="transition-colors text-slate-900">{feature.title}</span>
               </h3>
-              <p class="mt-2 hidden text-sm text-black" data-tab-desc>
+              <p class="mt-2 hidden text-sm text-black {i === 0 ? 'lg:block' : 'hidden'}" data-tab-desc>
                 {feature.description}
               </p>
             </button>
@@ -124,7 +125,7 @@ const {
               id={`pf-panel-${i}`}
               aria-labelledby={`pf-tab-${i}`}
               data-tab-panel
-              hidden
+              hidden={i !== 0}
             >
               <!-- En móvil, mostramos la descripción acá (no en la lista) -->
               <div class="relative px-4 sm:px-6 lg:hidden">

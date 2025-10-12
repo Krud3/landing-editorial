@@ -2,24 +2,59 @@
 interface Props {
   title: string;
   content: string;
+  canonical?:string;
+  ogImage?:string;
 }
 
-const { title, content } = Astro.props;
+const { title, content, canonical, ogImage } = Astro.props;
+
+const url = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+const defaultOg = new URL('/images/og-default.jpg', Astro.site).toString();
+const og = ogImage ?? defaultOg;
 
 import Footer from "@/components/ui/footer.astro";
 import Navbar from "@/components/ui/navbar.astro";
-
 import "@/styles/global.css"
 ---
 
-<html lang="es">
+<html lang="es-CO">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="description" content={content}/>
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <title>{title}</title>
+    <meta name="description" content={content}/>
+		<link rel="canonical" href={url}/>
+		
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={content} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={og} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={content} />
+    <meta name="twitter:image" content={og} />
+
+    <!-- WebSite (JSON-LD) con SearchAction opcional -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": Astro.site,
+        "name": title,
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": `${new URL('/search?q={search_term_string}', Astro.site)}`,
+          "query-input": "required name=search_term_string"
+        }
+      })}
+    </script>
 	</head>
 	<body class="bg-neutral-50">
     <Navbar/>

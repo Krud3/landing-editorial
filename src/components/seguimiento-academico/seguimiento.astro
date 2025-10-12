@@ -20,6 +20,18 @@ const enfoqueNiveles = [
     description: 'Pruebas por competencias tipo Prueba Saber.'
   }
 ];
+
+// JSON-LD del servicio
+const canonical = new URL("/seguimiento-academico", Astro.site).toString();
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Seguimiento Académico",
+  provider: { "@type":"Organization", name:"Editorial EMHM" },
+  areaServed: "CO",
+  url: canonical,
+  description: "Evaluación diagnóstica, evaluación por competencias y simulacros tipo Saber para fortalecer el aprendizaje y los resultados institucionales."
+};
 ---
 
 <section id="seguimiento-hero" class="py-5 sm:py-24 flex flex-row">
@@ -37,9 +49,9 @@ const enfoqueNiveles = [
     <div class="mx-auto relative overflow-hidden bg-indigo-50 rounded-3xl shadow-2xl py-20 sm:py-10">
       <div class="text-center px-4">
         <p class="font-semibold text-indigo-700">Seguimiento Académico</p>
-        <h2 class="mt-4 text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900">
+        <h1 class="mt-4 text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900">
           Más que evaluar, <span class="text-indigo-700 italic">transformamos el aprendizaje</span>
-        </h2>
+        </h1>
         <p class="mt-6 mx-auto max-w-3xl text-lg text-slate-700">
           Ofrecemos un sistema integral y progresivo de seguimiento académico diseñado para garantizar el fortalecimiento del aprendizaje en todas las áreas, con un enfoque innovador que combina evaluación cognitiva, competencias y simulacros tipo Pruebas Saber.
         </p>
@@ -72,7 +84,7 @@ const enfoqueNiveles = [
     <div class="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
       {enfoqueNiveles.map(nivel => (
         <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-          <h4 class="text-xl font-semibold text-slate-900">{nivel.title}</h4>
+          <h3 class="text-xl font-semibold text-slate-900">{nivel.title}</h3>
           <p class="mt-4 text-slate-600">{nivel.description}</p>
         </div>
       ))}
@@ -83,23 +95,27 @@ const enfoqueNiveles = [
 <section id="seguimiento-cta" class="py-20 sm:py-24 bg-slate-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center">
-      <h3 class="text-3xl lg:text-4xl font-bold text-slate-900">
+      <h2 class="text-3xl lg:text-4xl font-bold text-slate-900">
         La mejor inversión para <span class="text-indigo-700">resultados sobresalientes</span>
-      </h3>
+      </h2>
       <p class="mt-4 mx-auto max-w-2xl text-lg text-slate-600">
         ¡El diagnóstico se convierte en la base para garantizar el éxito académico! Permítenos mostrarte cómo nuestra plataforma puede potenciar el rendimiento de tu institución.
       </p>
       <div class="mt-8">
         <Link
           href="/contactanos"
-          target="_blank"
           style="indigo"
           size="lg"
           class="px-8 py-3 text-base shadow-md"
+          aria-label="Solicitar una demostración del módulo de Seguimiento Académico"
         >
           Solicitar una demostración
         </Link>
       </div>
+      <p class="mt-6 text-sm text-slate-600">
+        También te puede interesar: <a class="underline" href="/competencia-lectora">Competencia Lectora</a> · <a class="underline" href="/pre-icfes">Pre-ICFES</a>
+      </p>
     </div>
   </div>
 </section>
+<script type="application/ld+json">{JSON.stringify(serviceLd)}</script>

@@ -7,12 +7,12 @@ import Hero  from "@/components/libros/hero.astro"
 import Features from '@/components/libros/features.astro';
 
 const asignaturas = await getCollection('asignaturas');
+const title = "Libros por asignatura - Editorial EMHM";
+const description = "Explora nuestras colecciones de libros por áreas de formación: castellano, matemáticas, ciencias, sociales y más.";
+const canonical = new URL('/libros', Astro.site).toString();
 ---
 
-<Layout
-  title="Libros EMHM"
-  content="Contribuimos con la producción intelectual de textos y productos académicos de la mano de la tecnología para la comunidad estudiantil. ¡Conócenos!"
->
+<Layout title={title} content={description} canonical={canonical}>
   <Container class="pt-16 pb-8 md:pt-12 md:pb-24">
     <Hero/>
     <hr class="my-8" />

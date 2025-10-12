@@ -12,7 +12,7 @@ const sectionId = 'hero-competencia-lectora';
   <div class="py-6 overflow-visible">
     <Picture
       src={heroImage}
-      alt="Libro de competencia lectora, básica primaria, grado tercero."
+      alt="Portada del texto de competencia lectora, básica primaria, grado tercero."
       widths={[200, 400, 600]}
       sizes="(max-width: 800px) 100vw, 620px"
       loading="eager"
@@ -37,6 +37,7 @@ const sectionId = 'hero-competencia-lectora';
           download="demo.pdf"
           class="flex gap-1 items-center justify-center"
           style="indigo"
+          aria-label="Descargar demo en PDF de un capítulo de Competencia Lectora"
           rel="noopener">
           <div class="flex items-center gap-2">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=book" />
@@ -49,6 +50,7 @@ const sectionId = 'hero-competencia-lectora';
       </div>
       <div class="mt-2 flex flex-col sm:flex-row gap-3 items-start">
         <p class="italic text-zinc-500">Incluye libro impreso + simulacro virtual.</p>
+        <a href="/libros/competencia-lectora" class="underline text-sm ml-0 sm:ml-2">Ver libros por grado</a>
       </div>
 
   </div>

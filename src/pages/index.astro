@@ -9,9 +9,13 @@ import Colaboradores from "@/components/main/colaboradores.astro"
 import CTA from "@/components/main/CTA.astro"
 import OurClients from "@/components/main/our-clients.astro"
 import Video from "@/components/main/video.astro"
+
+const title = "Editorial EMHM - Textos y recursos académicos con tecnología";
+const description = "Contribuimos con la producción intelectual de textos y productos académicos apoyados en tecnología para estudiantes y colegios: libros por asignatura y grado, competencias lectoras, pre-ICFES y seguimiento académico.";
+const canonical = new URL('/', Astro.site).toString();
 ---
 
-<Layout title="EMHM" content="Contribuimos con la producción intelectual de textos y productos académicos de la mano de la tecnología para la comunidad estudiantil. ¡Conócenos!">
+<Layout title={title} content={description} canonical={canonical}>
 	<Container>
 		<Hero/>
 		<Features/>

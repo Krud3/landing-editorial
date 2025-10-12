@@ -1,4 +1,20 @@
+---
+const items = [
+  "Resultados generales por áreas",
+  "Desviación estándar por áreas",
+  "Indicadores por competencias y componentes",
+  "Análisis de cada pregunta (aciertos/distractores)",
+  "Resultados individuales con recomendaciones"
+];
+const itemListLd = {
+  "@context":"https://schema.org","@type":"ItemList",
+  itemListElement: items.map((name, i) => ({
+    "@type":"ListItem", position: i+1, name
+  }))
+};
+---
 <section id="pre-icfes-what-is" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex">
+  <script type="application/ld+json">{JSON.stringify(itemListLd)}</script>
   <div class="mx-auto relative overflow-hidden bg-indigo-50 rounded-3xl shadow-2xl py-20 sm:py-10">
     <div class="px-4">
       <h2 class="mt-4 text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 text-center">

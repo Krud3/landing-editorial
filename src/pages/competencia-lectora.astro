@@ -4,10 +4,39 @@ import Hero from "@/components/competencia-lectora/hero.astro"
 import Container from "@/components/container.astro"
 import Problema from "@/components/competencia-lectora/problema.astro"
 import WhatIs from "@/components/competencia-lectora/what-is.astro"
+
+const title = "Competencia lectora - texto + simulacro virtual | Editorial EMHM";
+const description = "Desarrolla lectura crítica aplicada: lecturas contextualizadas, preguntas desafiantes y simulacro virtual tipo ICFES. Ideal para fortalecer resultados institucionales.";
+const canonical = new URL("/competencia-lectora", Astro.site).toString();
+
+const crumbs = [
+  { name: "Inicio", url: new URL("/", Astro.site).toString() },
+  { name: "Competencia lectora", url: canonical }
+];
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: crumbs.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    item: c.url
+  }))
+};
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  url: canonical,
+  description
+};
 ---
 
 
-<Layout title="competencia lectora" content="Contribuimos con la producción intelectual de textos y productos académicos de la mano de la tecnología para la comunidad estudiantil. ¡Conócenos!">
+<Layout title={title} content={description} canonical={canonical}>
+  <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
+  <script type="application/ld+json">{JSON.stringify(webPageLd)}</script>
   <Container>
     <Hero/>
     <Problema/>

@@ -22,10 +22,26 @@ const librosPorAsignatura = todosLosLibros
 
 import defaultImage from '@/assets/images/Childrens_Book_Mockup_1.jpg';
 const imagePath = asignaturaActual?.data.secondImage ? asignaturaActual.data.secondImage : defaultImage;
+
+const title = `Libros de ${asignaturaActual?.data.title} - Editorial EMHM`;
+const description = `Explora libros de ${asignaturaActual?.data.title} por grado: contenidos, objetivos y recursos para el aula.`;
+const canonical = new URL(`/libros/${subjectSlug}`, Astro.site).toString();
+
+// NEW: breadcrumbs JSON-LD
+const crumbs = [
+  { name: 'Libros', url: new URL('/libros', Astro.site).toString() },
+  { name: asignaturaActual?.data.title, url: canonical },
+];
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })),
+};
 ---
 
-<Layout title={`Libros de ${asignaturaActual?.data.title}`} content="Contribuimos con la producción intelectual de textos y productos académicos...">
+<Layout title={title} content={description} canonical={canonical}>
   <Container>
+    <script type="application/ld+json">{JSON.stringify(ld)}</script>
     <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-10">
       
       <Image 
@@ -51,6 +67,17 @@ const imagePath = asignaturaActual?.data.secondImage ? asignaturaActual.data.sec
 
     </div>
 
+    <nav aria-label="Grados disponibles" class="mb-6">
+      <ul class="flex flex-wrap gap-2">
+        {librosPorAsignatura.map((libro) => {
+          const parts = libro.id.split('/');
+          const bookSlug = parts[1].replace(/\.md$/,'');
+          return (
+            <li><a class="text-sm underline hover:no-underline" href={`/libros/${subjectSlug}/${bookSlug}`}>{libro.data.title}</a></li>
+          );
+        })}
+      </ul>
+    </nav>
     <div class="space-y-8 max-w-4xl mx-auto">
       {
         librosPorAsignatura.map((libro: any) => {
@@ -65,7 +92,6 @@ const imagePath = asignaturaActual?.data.secondImage ? asignaturaActual.data.sec
               <p class="mt-2 text-black">{libro.data.description}</p>
             </a>
           )
-
         })
       }
     </div>

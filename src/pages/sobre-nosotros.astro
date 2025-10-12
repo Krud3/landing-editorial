@@ -1,7 +1,267 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+
+const title = "Sobre nosotros | Editorial Mercedes Herrera Mora S.A.S.";
+const description = "Editorial educativa con más de 20 años en Colombia. Textos académicos con ISBN, Competencia Lectora, Plataforma Digital y Proyecto Pre-ICFES con simulacros y análisis de resultados.";
+const canonical = new URL("/sobre-nosotros", Astro.site).toString();
+
+const breadcrumbLd = {
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    { "@type":"ListItem", "position":1, "name":"Inicio", "item": new URL("/", Astro.site).toString() },
+    { "@type":"ListItem", "position":2, "name":"Sobre nosotros", "item": canonical }
+  ]
+};
+
+const orgLd = {
+  "@context":"https://schema.org","@type":"Organization",
+  "name":"Editorial Mercedes Herrera Mora S.A.S.",
+  "url": canonical,
+  "logo": new URL("/logoEditorial.svg", Astro.site).toString(),
+  "email":"editorialmercedesherreramora@gmail.com",
+  "telephone":["+57 3187267013","+57 3171367968","+57 3243238533"],
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Callejón Alférez Real No 05",
+    "addressLocality":"Santiago de Cali",
+    "addressRegion":"Valle del Cauca",
+    "addressCountry":"CO"
+  }
+};
+
+// Catálogo (Product/Service) para buscadores
+const offerCatalogLd = {
+  "@context":"https://schema.org","@type":"OfferCatalog",
+  "name":"Portafolio de productos y servicios",
+  "itemListElement":[
+    {
+      "@type":"OfferCatalog","name":"Textos académicos con ISBN",
+      "itemListElement":[
+        {"@type":"Product","name":"Primaria a Noveno – Matemáticas"},
+        {"@type":"Product","name":"Primaria a Noveno – Lengua Castellana"},
+        {"@type":"Product","name":"Primaria a Noveno – Ciencias Naturales"},
+        {"@type":"Product","name":"Primaria a Noveno – Ciencias Sociales"},
+        {"@type":"Product","name":"Primaria a Noveno – Ética y Valores"},
+        {"@type":"Product","name":"Primaria a Noveno – Competencia Lectora"},
+        {"@type":"Product","name":"Décimo y Undécimo – Matemáticas"},
+        {"@type":"Product","name":"Décimo y Undécimo – Química"},
+        {"@type":"Product","name":"Décimo y Undécimo – Física"},
+        {"@type":"Product","name":"Décimo y Undécimo – Lengua Castellana"},
+        {"@type":"Product","name":"Décimo y Undécimo – Ética y Valores"},
+        {"@type":"Product","name":"Décimo y Undécimo – Competencia Lectora"}
+      ]
+    },
+    {
+      "@type":"Product","name":"Texto de Competencia Lectora + simulacro virtual",
+      "offers":{
+        "@type":"Offer","priceCurrency":"COP","price":"70000","availability":"https://schema.org/InStock"
+      }
+    },
+    {
+      "@type":"Service","name":"Plataforma Digital educativa",
+      "offers":{"@type":"Offer","priceCurrency":"COP","price":"100000"}
+    },
+    {
+      "@type":"Service","name":"Proyecto Pre-ICFES (10° y 11°)",
+      "description":"Diagnóstico, nivelación, simulacros (virtual y físico), retroalimentación y pruebas psicotécnicas."
+    }
+  ]
+};
+
+// FAQ para dudas frecuentes
+const faqLd = {
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"¿Qué incluye el texto de Competencia Lectora?",
+      "acceptedAnswer":{"@type":"Answer","text":"Libro impreso y un simulacro virtual. Cada periodo incluye dos lecturas contextualizadas y preguntas abiertas y de selección múltiple."}
+    },
+    {
+      "@type":"Question",
+      "name":"¿Cómo se entregan los resultados de los simulacros?",
+      "acceptedAnswer":{"@type":"Answer","text":"La institución programa las fechas (con 15 días de antelación). Los resultados se entregan máximo 10 días después, con reporte individual por estudiante y consolidado institucional por competencias y componentes."}
+    },
+    {
+      "@type":"Question",
+      "name":"¿Qué perfiles maneja la Plataforma Digital?",
+      "acceptedAnswer":{"@type":"Answer","text":"Docente, Estudiante, Coordinación Académica y Administración; permiten asignar, recibir y evaluar actividades, además de pruebas tipo ICFES con métricas inmediatas."}
+    },
+    {
+      "@type":"Question",
+      "name":"¿Cuánto cuesta el Proyecto Pre-ICFES?",
+      "acceptedAnswer":{"@type":"Answer","text":"Si se realiza en la institución: COP 350.000 por estudiante. En las instalaciones de la Editorial: COP 380.000 por estudiante. Duración estimada: 20 semanas."}
+    }
+  ]
+};
 ---
 
-<Layout title="Sobre nosotros. Editorial Mercedes Herrera Mora." content="Descubre más sobre la editorial.">
-  Sobre nosotros
+<Layout title={title} content={description} canonical={canonical}>
+  <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
+  <script type="application/ld+json">{JSON.stringify(orgLd)}</script>
+  <script type="application/ld+json">{JSON.stringify(offerCatalogLd)}</script>
+  <script type="application/ld+json">{JSON.stringify(faqLd)}</script>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <header class="text-center">
+      <h1 class="text-3xl md:text-4xl font-bold">Sobre nosotros</h1>
+      <p class="mt-3 text-gray-700 max-w-3xl mx-auto">{description}</p>
+      <p class="mt-1 text-sm text-gray-500">Santiago de Cali · Actualizado: 17 de julio de 2025</p>
+    </header>
+
+    <!-- Portafolio resumido -->
+    <section class="mt-10 grid gap-8 md:grid-cols-2">
+      <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold">Portafolio de servicios</h2>
+        <ul class="mt-4 list-disc pl-5 space-y-1 text-gray-700">
+          <li><a href="/libros" class="underline">Textos académicos con ISBN</a> (Primaria a 11°), por asignatura y grado.</li>
+          <li><a href="/competencia-lectora" class="underline">Competencia Lectora</a>: libro + simulacro virtual.</li>
+          <li><a href="/pre-icfes" class="underline">Proyecto Pre-ICFES</a>: diagnóstico, nivelación y simulacros (virtual y físico).</li>
+          <li><a href="/seguimiento-academico" class="underline">Plataforma Digital</a> para tareas, bancos de preguntas y evaluaciones por competencia.</li>
+        </ul>
+      </article>
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold">Textos académicos</h2>
+        <p class="mt-2 text-gray-700">
+          Cubren estándares curriculares y DBA. Cada unidad integra <strong>talleres didácticos</strong> (VF justificado, abiertas, selección, juegos de palabras y evaluación por competencias).
+          El docente puede seleccionar contenidos según necesidades institucionales.
+        </p>
+        <p class="mt-3 text-sm text-gray-600">Niveles: Primaria a Noveno · Décimo y Undécimo. Asignaturas: Matemáticas, Lengua Castellana, Ciencias Naturales, Ciencias Sociales, Ética y Valores, Competencia Lectora; y en media también Química y Física.</p>
+      </article>
+    </section>
+
+    <!-- Competencia lectora -->
+    <section class="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold">Competencia Lectora</h2>
+      <p class="mt-2 text-gray-700">
+        Lecturas contextualizadas por áreas (p. ej., análisis de experimentos, gráficos matemáticos, problemas sociales) y preguntas <em>abiertas</em> y de <em>selección múltiple</em>.
+        Incluye dos lecturas por periodo y un <strong>simulacro virtual</strong>.
+      </p>
+      <div class="mt-3 grid md:grid-cols-2 gap-4 text-gray-700">
+        <div>
+          <h3 class="font-semibold">Áreas de trabajo</h3>
+          <ul class="mt-1 list-disc pl-5 space-y-1">
+            <li>Química, Física, Biología, Matemáticas</li>
+            <li>Ciencias Sociales, Ética y Valores, Economía</li>
+            <li>Lengua Castellana, Ambiental, Inglés</li>
+            <li>Administración y Emprendimiento</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Beneficios esperados</h3>
+          <ul class="mt-1 list-disc pl-5 space-y-1">
+            <li>Mejor comprensión y análisis crítico.</li>
+            <li>Preparación para pruebas Saber/ICFES.</li>
+            <li>Formación de ciudadanos reflexivos con resolución de problemas.</li>
+          </ul>
+          <p class="mt-2"><strong>Precio de referencia:</strong> COP 70.000 (libro impreso + simulacro virtual).</p>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-gray-600">Programación: la institución entrega fechas con 15 días de antelación; resultados en máximo 10 días con reportes individuales e institucionales por competencias/componentes.</p>
+      <p class="mt-3"><a class="underline" href="/competencia-lectora">Ver detalles</a></p>
+    </section>
+
+    <!-- Plataforma Digital -->
+    <section class="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold">Plataforma Digital</h2>
+      <div class="mt-2 grid md:grid-cols-2 gap-4 text-gray-700">
+        <div>
+          <h3 class="font-semibold">Funcionalidades</h3>
+          <ul class="mt-1 list-disc pl-5 space-y-1">
+            <li>Guías descargables y actividades editables “Aplico mi saber”.</li>
+            <li>Entrega/recepción de actividades con plazos, y actividades de apoyo por estudiante.</li>
+            <li>Pruebas tipo ICFES con métricas inmediatas y práctica por preguntas.</li>
+            <li>Perfiles: Docente, Estudiante, Coordinación y Administración.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Seguimiento Académico</h3>
+          <ul class="mt-1 list-disc pl-5 space-y-1">
+            <li>Preguntas cognitivas por tema y evaluaciones por competencia por unidad/periodo.</li>
+            <li>Rutas de nivelación y entrenamiento por unidad o periodo.</li>
+            <li>Comunicación institucional integrada y módulo de tareas.</li>
+          </ul>
+          <p class="mt-2"><strong>Costo de referencia:</strong> COP 100.000 (plataforma con textos digitales).</p>
+        </div>
+      </div>
+      <p class="mt-3"><a class="underline" href="/seguimiento-academico">Ver seguimiento académico</a></p>
+    </section>
+
+    <!-- Proyecto Pre-ICFES -->
+    <section class="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold">Proyecto Pre-ICFES (10° y 11°)</h2>
+      <div class="mt-2 grid md:grid-cols-2 gap-4 text-gray-700">
+        <div>
+          <h3 class="font-semibold">Objetivos</h3>
+          <ul class="mt-1 list-disc pl-5 space-y-1">
+            <li>Mejorar niveles de competencia.</li>
+            <li>Apoyo pedagógico integral y herramientas prácticas.</li>
+            <li>Simulacros para verificar fortalezas y debilidades.</li>
+          </ul>
+          <h3 class="mt-4 font-semibold">Metodología 10°</h3>
+          <ul class="mt-1 list-disc pl-5 space-y-1">
+            <li>Diagnóstico por área y nivelación según resultados.</li>
+            <li>Actividades de mejora, simulacros virtuales y físicos.</li>
+            <li>Acompañamiento docente y retroalimentación continua.</li>
+          </ul>
+          <h3 class="mt-4 font-semibold">Áreas 10°</h3>
+          <p class="mt-1">Matemáticas, Castellano, Biología, Química, Tecnología y sociedad, Sociales y Ciudadana, Inglés, Razonamiento cuantitativo, Física, Filosofía.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold">Metodología 11°</h3>
+          <ul class="mt-1 list-disc pl-5 space-y-1">
+            <li>Diagnóstico, actividades de mejora y simulacros Saber liberados.</li>
+            <li>Simulacros virtuales y físicos, orientación docente.</li>
+            <li>Retroalimentación y pruebas psicotécnicas.</li>
+          </ul>
+          <h3 class="mt-4 font-semibold">Áreas 11°</h3>
+          <p class="mt-1">Matemáticas, Lectura Crítica, Ciencias Naturales (tecnología y sociedad), Sociales y Ciudadana, Inglés.</p>
+          <h3 class="mt-4 font-semibold">Material y horarios</h3>
+          <ul class="mt-1 list-disc pl-5 space-y-1">
+            <li>Texto guía, diagnóstico, pruebas por área, simulacro final y psicotécnica.</li>
+            <li>Horarios sugeridos: Mar/Jue 3–5 pm (flexible) · Sábados 7:00 am–12:30 pm · Simulacros en dos sesiones 7:00 am–4:00 pm.</li>
+            <li>Duración del proyecto: 20 semanas.</li>
+          </ul>
+          <p class="mt-2"><strong>Costos de referencia:</strong> En institución: COP 350.000 por estudiante · En editorial: COP 380.000 por estudiante.</p>
+        </div>
+      </div>
+      <p class="mt-3"><a class="underline" href="/pre-icfes">Ver más sobre Pre-ICFES</a></p>
+    </section>
+
+    <!-- Caso de experiencia -->
+    <section class="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold">Certificación de experiencia</h2>
+      <p class="mt-2 text-gray-700">
+        2022–2024: acompañamiento continuo a estudiantes de la Institución Educativa Politécnico Municipal (Santiago de Cali) para Pruebas SABER. 
+        Se evidenció mejora significativa en resultados institucionales, destacándose entre las instituciones oficiales de la ciudad.
+      </p>
+      <p class="mt-2 text-sm text-gray-600">Metodología didáctica con apoyo tecnológico, materiales actualizados y orientación personalizada.</p>
+    </section>
+
+    <!-- Datos legales y contacto -->
+    <section class="mt-10 grid gap-8 md:grid-cols-2">
+      <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold">Datos legales</h2>
+        <ul class="mt-3 text-gray-700 space-y-1">
+          <li><strong>NIT:</strong> 900838854-5</li>
+          <li><strong>Domicilio:</strong> Callejón Alférez Real No 05 · Cali, Valle del Cauca, Colombia</li>
+          <li><strong>Representante Legal:</strong> Luis Francisco Cornejo Quiñones</li>
+        </ul>
+      </article>
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold">Contacto</h2>
+        <ul class="mt-3 text-gray-700 space-y-1">
+          <li><a class="underline" href="mailto:editorialmercedesherreramora@gmail.com">editorialmercedesherreramora@gmail.com</a></li>
+          <li><a class="underline" href="tel:+573187267013">(+57) 318 726 7013</a> · <a class="underline" href="tel:+573171367968">317 136 7968</a> · <a class="underline" href="tel:+573243238533">324 323 8533</a></li>
+          <li><a class="underline" href="/contactanos">Formulario de contacto</a></li>
+        </ul>
+      </article>
+    </section>
+
+    <div class="mt-10 text-center">
+      <a href="/contactanos" class="inline-block rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white hover:bg-indigo-700" aria-label="Ir a la página de contacto">Conversemos</a>
+    </div>
+  </section>
 </Layout>

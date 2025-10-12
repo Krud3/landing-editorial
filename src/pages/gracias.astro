@@ -1,15 +1,21 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+
+const title = "¡Gracias!";
+const description = "Hemos recibido tu mensaje. Te contactaremos muy pronto.";
+const canonical = new URL("/gracias", Astro.site).toString();
 ---
 
-<Layout title="¡Gracias!" content="Gracias por contactarnos.">
+<Layout title={title} content={description} canonical={canonical}>
+  <!-- evita indexar la página de gracias -->
+  <meta name="robots" content="noindex, nofollow" />
   <section class="mx-auto max-w-3xl px-4 py-16 text-center">
     <h1 class="text-3xl font-bold text-gray-900">¡Gracias por escribirnos! 🎉</h1>
     <p class="mx-auto mt-3 max-w-2xl text-gray-600">
       Hemos recibido tu mensaje y te contactaremos muy pronto. Si lo prefieres,
       también puedes escribirnos directamente a
-      <a href="mailto:editorialmercedesherreramora@gmail.com" class="text-indigo-600 underline">editorialmercedesherreramora@gmail.com</a>.
+      <a href="mailto:comercial@editorialmercedesherrerasas.com" class="text-indigo-600 underline">comercial@editorialmercedesherrerasas.com</a>.
     </p>
-    <a href="/" class="mt-8 inline-block rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white hover:bg-indigo-700">Volver al inicio</a>
+    <a href="/" class="mt-8 inline-block rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white hover:bg-indigo-700" aria-label="Volver al inicio">Volver al inicio</a>
   </section>
 </Layout>

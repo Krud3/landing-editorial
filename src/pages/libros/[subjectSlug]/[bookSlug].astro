@@ -28,18 +28,39 @@ if (!libro) {
   return Astro.redirect('/404');
 }
 
-// 1. CAMBIO PRINCIPAL: Se elimina la función 'render' importada.
-// En su lugar, llamamos al método .render() en la entrada del libro.
 const { Content } = await libro.render();
+
+// NEW: metas
+const title = `${libro.data.title} – Editorial EMHM`;
+const description = libro.data.description ?? `Detalles del libro ${libro.data.title}.`;
+const canonical = new URL(`/libros/${subjectSlug}/${bookSlug}`, Astro.site).toString();
+
+// NEW: breadcrumbs
+const crumbs = [
+  { name: 'Libros', url: new URL('/libros', Astro.site).toString() },
+  { name: libro.data.title ?? subjectSlug, url: new URL(`/libros/${subjectSlug}`, Astro.site).toString() },
+  { name: libro.data.title, url: canonical },
+];
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })),
+};
 ---
 
-<Layout title={libro.data.title} content={libro.data.description}>
+<Layout title={title} content={description} canonical={canonical}>
   <Container class="py-16">
+    <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
+    <script type="application/ld+json">{JSON.stringify(productLd)}</script>
+
     <h1 class="text-4xl font-bold mb-4">{libro.data.title}</h1>
     <p class="text-lg text-gray-700 mb-8">{libro.data.description}</p>
-    <!-- Aquí se renderiza el markdown completo -->
+
     <div class="prose prose-neutral">
       <Content />
     </div>
+    <nav class="mt-10">
+      <a class="underline" href={`/libros/${subjectSlug}`}>← Volver a {libro.data.title ?? 'la asignatura'}</a>
+    </nav>
   </Container>
 </Layout>
