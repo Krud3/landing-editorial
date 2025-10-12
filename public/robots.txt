@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /mailer.php
+Disallow: /gracias
+Allow: /
+
+Sitemap: https://comercial.editorialmercedesherrerasas.com/sitemap-index.xml

@@ -14,7 +14,10 @@ const og = ogImage ?? defaultOg;
 
 import Footer from "@/components/ui/footer.astro";
 import Navbar from "@/components/ui/navbar.astro";
+import WhatsAppButton from "@/components/ui/whatsapp.astro";
 import "@/styles/global.css"
+
+const hideWhats = Astro.url.pathname === "/gracias";
 ---
 
 <html lang="es-CO">
@@ -65,5 +68,11 @@ import "@/styles/global.css"
         content-visibility: auto;
       }
     </style>
+    {!hideWhats && (
+      <WhatsAppButton
+          phone="573187267013"
+          message={`Hola, vengo de comercial EMHM ${Astro.url.pathname} y necesito asesoría.`}
+        />
+    )}
 	</body>
 </html>
