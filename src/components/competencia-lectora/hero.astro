@@ -9,14 +9,16 @@ const sectionId = 'hero-competencia-lectora';
 <main
   class="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-8 pt-16 pb-5 md:pt-12 md:pb-5"
 >
-  <div class="py-6 overflow-visible">
+  <div class="py-6 overflow-visible" style="aspect-ratio: 2032 / 2160;">
     <Picture
       src={heroImage}
       alt="Portada del texto de competencia lectora, básica primaria, grado tercero."
-      widths={[200, 400, 600]}
+      widths={[620, 930, 1240]}
       sizes="(max-width: 800px) 100vw, 620px"
       loading="eager"
       format="avif"
+      fetchpriority="high"
+      class="block max-w-full h-auto"
     />
   </div>
 

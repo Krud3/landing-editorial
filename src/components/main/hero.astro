@@ -8,15 +8,16 @@ const sectionId = 'hero';
 <main
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
 
-    <div class="py-6 md:order-1 hidden md:block">
+    <div class="py-6 md:order-1 hidden md:block" style="aspect-ratio: 2032 / 2160;">
       <Picture
         src={heroImage}
         alt="Niño leyendo, preparandose para el futuro."
-        widths={[200, 400, 600]}
+        widths={[620, 930, 1240]}
         sizes="(max-width: 800px) 100vw, 620px"
         loading="eager"
         format="avif"
         fetchpriority="high"
+        class="block max-w-full h-auto"
       />
     </div>
     <div>
