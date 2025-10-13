@@ -15,7 +15,7 @@ const og = ogImage ?? defaultOg;
 import Footer from "@/components/ui/footer.astro";
 import Navbar from "@/components/ui/navbar.astro";
 import WhatsAppButton from "@/components/ui/whatsapp.astro";
-import "@/styles/global.css"
+import globalCssUrl from "@/styles/global.css?url"
 
 const hideWhats = Astro.url.pathname === "/gracias";
 ---
@@ -26,6 +26,8 @@ const hideWhats = Astro.url.pathname === "/gracias";
 		<meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="style" href={globalCssUrl} />
+    <link rel="stylesheet" href={globalCssUrl} media="print" onload="this.media='all'">
     
     <title>{title}</title>
     <meta name="description" content={content}/>

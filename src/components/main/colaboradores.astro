@@ -1,15 +1,35 @@
 ---
+import { Image } from 'astro:assets';
+import FMHMDT from '@/assets/images/FMHMDT-2.png';
+import CMAR from '@/assets/images/CMAR-2.png';
+import CCDPOETH from '@/assets/images/CCDPOETH-2.png';
+import CLASF from '@/assets/images/CLASF-2.png';
 ---
-
 
 <div class="mt-24">
   <h2 class="text-center text-slate-500">La educación nos acerca a Dios</h2>
-  <ul class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap">
-    <li><img src="images/FMHMDT-2.png" alt="Logo fundación Mercedes Herrera Mora de Tenorío" class="size-32 md:size-52"/></li>
-    <li><img src="images/CMAR-2.png" alt="Logo Colegio Mayor Alferez Real" class="size-32 md:size-52"/></li>
-    <li><img src="images/CCDPOETH-2.png" alt="Logo Colegio comercial de palmira OETH" class="size-32 md:size-52"/></li>
-    <li><img src="images/CLASF-2.png" alt="Logo Colegio los Angeles San Fernando" class="size-32 md:size-52"/></li>
-    
-    
-  </ul>
+
+  <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap">
+    <Image
+      src={FMHMDT}
+      alt="Fundación Mercedes Herrera Mora de Tenorío"
+      widths={[128, 208, 416]}                              
+      sizes="(min-width: 768px) 13rem, 8rem"                
+      loading="lazy" decoding="async"
+      format="webp" quality={90}
+      class="w-32 md:w-52 h-auto"                           
+    />
+    <Image src={CMAR} alt="Colegio Mayor Alférez Real"
+      widths={[128, 208, 416]} sizes="(min-width: 768px) 13rem, 8rem"
+      loading="lazy" decoding="async" format="webp" quality={90}
+      class="w-32 md:w-52 h-auto" />
+    <Image src={CCDPOETH} alt="Colegio Comercial de Palmira OETH"
+      widths={[128, 208, 416]} sizes="(min-width: 768px) 13rem, 8rem"
+      loading="lazy" decoding="async" format="webp" quality={90}
+      class="w-32 md:w-52 h-auto" />
+    <Image src={CLASF} alt="Colegio Los Ángeles San Fernando"
+      widths={[128, 208, 416]} sizes="(min-width: 768px) 13rem, 8rem"
+      loading="lazy" decoding="async" format="webp" quality={90}
+      class="w-32 md:w-52 h-auto" />
+  </div>
 </div>
