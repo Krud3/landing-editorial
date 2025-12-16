@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://comercial.editorialmercedesherrerasas.com',
+  site: 'https://www.emhm.app',
   integrations: [sitemap()],
   vite: {
     plugins: [
