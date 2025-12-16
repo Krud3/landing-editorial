@@ -2,6 +2,7 @@
 ```
 landing-editorial
 ├─ astro.config.mjs
+├─ dist.zip
 ├─ package-lock.json
 ├─ package.json
 ├─ public
@@ -14,18 +15,15 @@ landing-editorial
 │  │  ├─ seguimientoAcademico.svg
 │  │  └─ textosIcon.svg
 │  ├─ images
-│  │  ├─ CCDPOETH-2.png
 │  │  ├─ Childrens_Book_Mockup_1.jpg
 │  │  ├─ Childrens_Book_Mockup_2.jpg
 │  │  ├─ Childrens_Book_Mockup_3.jpg
 │  │  ├─ Childrens_Book_Mockup_4.jpg
 │  │  ├─ Childrens_Book_Mockup_5.jpg
-│  │  ├─ Childrens_Book_Mockup_6.jpg
-│  │  ├─ CLASF-2.png
-│  │  ├─ CMAR-2.png
-│  │  └─ FMHMDT-2.png
+│  │  └─ Childrens_Book_Mockup_6.jpg
 │  ├─ logoEditorial.svg
 │  ├─ PDF
+│  ├─ robots.txt
 │  └─ SVG
 │     └─ hero1.svg
 ├─ README.md
@@ -39,10 +37,14 @@ landing-editorial
 │  │  │  ├─ seguimientoAcademico.svg
 │  │  │  └─ textosIcon.svg
 │  │  ├─ images
+│  │  │  ├─ CCDPOETH-2.png
 │  │  │  ├─ Childrens_Book_Mockup_1.jpg
 │  │  │  ├─ Childrens_Book_Mockup_3.png
+│  │  │  ├─ CLASF-2.png
+│  │  │  ├─ CMAR-2.png
 │  │  │  ├─ cuestionario-icfes.png
 │  │  │  ├─ exam-boy.png
+│  │  │  ├─ FMHMDT-2.png
 │  │  │  ├─ front-cover
 │  │  │  │  ├─ aprestamiento.png
 │  │  │  │  ├─ biologia.png
@@ -154,7 +156,8 @@ landing-editorial
 │  │     ├─ LibroAssembler.astro
 │  │     ├─ link.astro
 │  │     ├─ navbar.astro
-│  │     └─ ScreenshotPlaceholder.astro
+│  │     ├─ ScreenshotPlaceholder.astro
+│  │     └─ whatsapp.astro
 │  ├─ content
 │  │  ├─ asignaturas
 │  │  │  ├─ aprestamiento.md
@@ -282,9 +285,10 @@ landing-editorial
 │  │     │  └─ noveno.md
 │  │     └─ mi-proyecto-emocional.md
 │  ├─ layouts
-│  │  ├─ Layout-cc.astro
 │  │  └─ Layout.astro
 │  ├─ pages
+│  │  ├─ api
+│  │  │  └─ send-email.ts
 │  │  ├─ competencia-lectora.astro
 │  │  ├─ contactanos.astro
 │  │  ├─ gracias.astro
