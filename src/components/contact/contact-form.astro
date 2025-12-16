@@ -1,67 +1,128 @@
 ---
-const RECEIVER_EMAIL = "comercial@editorialmercedesherrerasas.com";
-const ACTION = `https://formsubmit.co/${RECEIVER_EMAIL}`;
+// src/components/contact/contact-form.astro
 ---
 
 <section class="w-full">
-<form method="POST" action="/mailer.php" class="mx-auto grid max-w-2xl gap-4 rounded-2xl bg-white/70 p-6 shadow-lg backdrop-blur-md">
-  <!-- Honeypot anti-bots (debe quedar vacío) -->
-  <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" />
+  <form id="contact-form" class="mx-auto grid max-w-2xl gap-4 rounded-2xl bg-white/70 p-6 shadow-lg backdrop-blur-md">
+    
+    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" />
 
-  <div class="grid gap-4 md:grid-cols-2">
+    <div class="grid gap-4 md:grid-cols-2">
+      <div>
+        <label for="nombre" class="mb-1 block text-sm font-medium text-gray-700">Nombre completo</label>
+        <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500" />
+      </div>
+      <div>
+        <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Correo electrónico</label>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="tucorreo@ejemplo.com" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500" />
+      </div>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <div>
+        <label for="telefono" class="mb-1 block text-sm font-medium text-gray-700">Teléfono</label>
+        <input 
+          id="telefono" 
+          name="telefono" 
+          type="tel" 
+          inputmode="tel" 
+          placeholder="Ej: 3187267013" 
+          pattern="[0-9 +()-]{7,}"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500" 
+        />
+      </div>
+      <div>
+        <label for="motivo" class="mb-1 block text-sm font-medium text-gray-700">Motivo de contacto</label>
+        <select id="motivo" name="motivo" required class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 focus:border-indigo-500">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option>Textos académicos</option>
+          <option>Competencia lectora</option>
+          <option>Plataforma digital</option>
+          <option>Seguimiento académico</option>
+          <option>Preparación ICFES / Preicfes</option>
+          <option>Otro</option>
+        </select>
+      </div>
+    </div>
+
     <div>
-      <label for="nombre" class="mb-1 block text-sm font-medium text-gray-700">Nombre completo</label>
-      <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500" />
+      <label for="mensaje" class="mb-1 block text-sm font-medium text-gray-700">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" required rows="6" placeholder="Cuéntanos cómo podemos ayudarte..." class="w-full resize-y rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500"></textarea>
     </div>
     <div>
-      <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Correo electrónico</label>
-      <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="tucorreo@ejemplo.com" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500" />
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAACG66MjJzmUf6fPI" data-theme="light"></div>
     </div>
-  </div>
 
-  <div class="grid gap-4 md:grid-cols-2">
-    <div>
-      <label for="telefono" class="mb-1 block text-sm font-medium text-gray-700">Teléfono</label>
-      <input id="telefono" name="telefono" type="tel" inputmode="tel" placeholder="Ej: 3187267013" pattern="[0-9\s+()-]{7,}" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500" />
+    <div class="flex items-start gap-3">
+      <input id="policy" name="policy" type="checkbox" required class="mt-1" />
+      <label for="policy" class="text-sm text-gray-600">
+        Acepto ser contactado(a) por la Editorial MHM según las finalidades de comunicación y servicio.
+        Más información en <a href="/sobre-nosotros" class="text-indigo-600 underline">Sobre nosotros</a>.
+      </label>
     </div>
-    <div>
-      <label for="motivo" class="mb-1 block text-sm font-medium text-gray-700">Motivo de contacto</label>
-      <select id="motivo" name="motivo" required class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 focus:border-indigo-500">
-        <option value="" disabled selected>Selecciona una opción</option>
-        <option>Textos académicos</option>
-        <option>Competencia lectora</option>
-        <option>Plataforma digital</option>
-        <option>Seguimiento académico</option>
-        <option>Preparación ICFES / Preicfes</option>
-        <option>Otro</option>
-      </select>
+
+    <div class="flex items-center justify-end gap-3 pt-2">
+      <button type="reset" class="rounded-lg border border-gray-300 px-4 py-2 text-gray-600 hover:bg-gray-100">Limpiar</button>
+      <button type="submit" id="submit-btn" class="rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white hover:bg-indigo-700">
+        Enviar mensaje
+      </button>
     </div>
-  </div>
-
-  <div>
-    <label for="mensaje" class="mb-1 block text-sm font-medium text-gray-700">Mensaje</label>
-    <textarea id="mensaje" name="mensaje" required rows="6" placeholder="Cuéntanos cómo podemos ayudarte..." class="w-full resize-y rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500"></textarea>
-  </div>
-
-  <div class="flex items-start gap-3">
-    <input id="policy" name="policy" type="checkbox" required class="mt-1" />
-    <label for="policy" class="text-sm text-gray-600">
-      Acepto ser contactado(a) por la Editorial MHM según las finalidades de comunicación y servicio.
-      Más información en <a href="/sobre-nosotros" class="text-indigo-600 underline">Sobre nosotros</a>.
-    </label>
-  </div>
-
-  <div class="flex items-center justify-end gap-3 pt-2">
-    <button type="reset" class="rounded-lg border border-gray-300 px-4 py-2 text-gray-600 hover:bg-gray-100">Limpiar</button>
-    <button type="submit" class="rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white hover:bg-indigo-700">
-      Enviar mensaje
-    </button>
-  </div>
-
-  <p class="mt-1 text-xs text-gray-500">
-    * También puedes escribirnos a
-    <a href="mailto:comercial@editorialmercedesherrerasas.com" class="text-indigo-600 underline">comercial@editorialmercedesherrerasas.com</a>.
-  </p>
-</form>
-
+  </form>
 </section>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const originalBtnText = submitBtn ? submitBtn.innerText : "Enviar mensaje";
+
+  if (form && submitBtn) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Enviando...";
+
+      const formData = new FormData(form);
+      
+      const turnstileToken = formData.get("cf-turnstile-response");
+      
+      if (!turnstileToken) {
+        alert("Por favor completa la verificación de seguridad");
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+        return;
+      }
+
+      const data = {
+        ...Object.fromEntries(formData),
+        turnstileToken,
+      };
+
+      try {
+        const response = await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert("¡Mensaje enviado con éxito! Te contactaremos pronto.");
+          form.reset();
+          (window as any).turnstile?.reset();
+        } else {
+          console.error("Error servidor:", result);
+          alert("Hubo un error: " + (result.message || "Desconocido"));
+        }
+      } catch (error) {
+        console.error("Error red:", error);
+        alert("Error de conexión. Verifica tu internet.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+      }
+    });
+  }
+</script>
