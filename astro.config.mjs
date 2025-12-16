@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel/serverless'
+import vercel from '@astrojs/vercel'
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'hybrid',
+  output: 'static',
   adapter: vercel(),
   site: 'https://www.emhm.app',
   integrations: [sitemap()],
